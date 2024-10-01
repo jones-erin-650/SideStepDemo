@@ -13,6 +13,9 @@ func _process(delta: float) -> void:
 #		Other game logic relies on knowing which lanes the players are in
 #		STATE: sameLane
 #		STATE: differentLanes
+#		LISTENER: onLaneSwitch()
+#			when they switch lanes it should recalculate what lanes the players are in
+#			adjust directions and movesets accordingly
 	
 #	Horizontal Direction Handling
 #		The horizontal direction should be based on the location of the other player
