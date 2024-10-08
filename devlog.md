@@ -1,5 +1,10 @@
 ### 2024-10-7 - 1 hr: 3d movement basics
 * resolved a merge conflight with the comment planning
+* followed one tutorial for grid based movement but decided against it: https://www.youtube.com/watch?v=8tDcJEbQnW0&list=PL1VENaIqLopxeHHpqYY1nDQ3Erm37exLb&index=12&pp=gAQBiAQB
+* somewhat followed a tutorial for grid based movement: https://www.youtube.com/watch?v=9u1Dq6h7sGU
+* coded logic for moving around in a grid
+* right now the character moves way too fast, and horizontal movement is still tied to a grid which isn't ideal
+* used chatgpt to fix a bug where you could only use once then never again because of the way the is_moving variable was handled
 
 ### 2024-10-1 - 2 hr: comment prototypes
 * began making a comment prototype of the character movement
