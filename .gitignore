@@ -5,6 +5,7 @@
 .import/
 export.cfg
 export_presets.cfg
+export.zip
 
 # Imported translations (automatically generated from CSV files)
 *.translation
@@ -20,6 +21,7 @@ mono_crash.*.json
 
 .build
 .build/*
+.build.*
 
 .build.zip
 export.zip

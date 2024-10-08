@@ -22,6 +22,7 @@ func _physics_process(delta):
 #		or FUNC: switchVerticalDirection() so the game loop can handle it
 	
 #	Horizontal direction handling
+
 #		FUNCT: switchVerticalDirection()
 	
 #	Horizontal Movement Handling
@@ -40,3 +41,4 @@ func _physics_process(delta):
 #		FUNC: incrementLane()
 #		FUNC: decrementLane()
 #		EVENT: laneSwitched()
+
