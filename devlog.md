@@ -1,3 +1,10 @@
+### 2024-10-7 - 1 hrs: Redone 3d movement Basics
+* The way I set it up before was not the best
+* it was hard to get grid based movement working properly, and trying to get regular horizontal movement to work nicely with it was not going well
+* used chatgpt to make a basic structure that uses an array for lanes, and has up and down inputs increment the position in the array
+* had to clean up some of its implementation, and there is still a lot I need to redo for it
+* watched this video as right now I am relying on chatgpt as a crutch due to not knowing the language too well yet: https://www.youtube.com/watch?v=e1zJS31tr88
+
 ### 2024-10-7 - 1.5 hrs: 3d movement basics
 * resolved a merge conflight with the comment planning
 * followed one tutorial for grid based movement but decided against it: https://www.youtube.com/watch?v=8tDcJEbQnW0&list=PL1VENaIqLopxeHHpqYY1nDQ3Erm37exLb&index=12&pp=gAQBiAQB
