@@ -1,3 +1,6 @@
+### 2024-10-7 - 1 hr: 3d movement basics
+* resolved a merge conflight with the comment planning
+
 ### 2024-10-1 - 2 hr: comment prototypes
 * began making a comment prototype of the character movement
 * this just has explainations what what logic needs to be where
