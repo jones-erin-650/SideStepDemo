@@ -1,4 +1,4 @@
-### 2024-10-7 - 1 hr: 3d movement basics
+### 2024-10-7 - 1.5 hrs: 3d movement basics
 * resolved a merge conflight with the comment planning
 * followed one tutorial for grid based movement but decided against it: https://www.youtube.com/watch?v=8tDcJEbQnW0&list=PL1VENaIqLopxeHHpqYY1nDQ3Erm37exLb&index=12&pp=gAQBiAQB
 * somewhat followed a tutorial for grid based movement: https://www.youtube.com/watch?v=9u1Dq6h7sGU
