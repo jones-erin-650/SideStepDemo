@@ -23,3 +23,5 @@ mono_crash.*.json
 .build/*
 .build.*
 
+.build.zip
+export.zip

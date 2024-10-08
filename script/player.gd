@@ -13,15 +13,16 @@ func _physics_process(delta):
 #		STATE: sameLane
 #		STATE: seperateLane
 
+#	Character Moveset Handling
+#		STATE: normalMoveset
+#		STATE: knockdownMoveset
+#		STATE: sideStepMoveset
+
 #	Vertical Direction Handling
-#		Characters need to face up or down based on what lane the other player is in
-#		FUNC: determineVerticalDirection()
 #		or FUNC: switchVerticalDirection() so the game loop can handle it
 	
 #	Horizontal direction handling
-#		The horizontal direction should be based on the location of the other player
-#		if player 2 is to the left of p1, then face left, etc
-#		FUNC: determineHorizontalDirection()
+
 #		FUNCT: switchVerticalDirection()
 	
 #	Horizontal Movement Handling
@@ -37,5 +38,7 @@ func _physics_process(delta):
 
 #	Vertical Movement handling
 #		If you press up or down then it switches you into the corresponding lane
+#		FUNC: incrementLane()
+#		FUNC: decrementLane()
+#		EVENT: laneSwitched()
 
-#		
