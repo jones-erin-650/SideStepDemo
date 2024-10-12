@@ -1,7 +1,6 @@
 extends CharacterBody2D
 
 @onready var tile_map: TileMap = $"../TileMap"
-@onready var player: CharacterBody2D = $"."
 
 var is_moving = false
 
@@ -12,26 +11,45 @@ var is_moving = false
 #		VAR: playerLane
 #		STATE: sameLane
 #		STATE: seperateLane
+#TODO: this should be filled out by tilemap data rather than set values. doing it this way makes it a lot harder to add extra lanes
+var lanes = [10, -5, -20]
+var current_lane = 1
+var horizontal_speed = 200
 
 #	Character Moveset Handling
 #		STATE: normalMoveset
 #		STATE: knockdownMoveset
 #		STATE: sideStepMoveset
 
-func _physics_process(delta):
-#	need to wait till we're finished moving before listening to new inputs
-	if is_moving:
-		return
-	
-	if Input.is_action_pressed("up"):
-		move(Vector2.UP)
-	elif Input.is_action_pressed("down"):
-		move(Vector2.DOWN)
-	elif Input.is_action_pressed("left"):
-		move(Vector2.LEFT)
-	elif Input.is_action_pressed("right"):
-		move(Vector2.RIGHT)
 
+func _ready():
+	position.y = lanes[current_lane]  # Set the initial position to the first lane
+
+func _process(delta):
+	handle_input(delta)
+
+func handle_input(delta):
+	# Vertical Inputs
+#		If you press up or down then it switches you into the corresponding lane
+#		This is done with grid based movement where each lane is a different vertical grid
+	if Input.is_action_just_pressed("ui_up"):
+#        TODO: incrementing and decrementing the lanes should be handled by a function 
+#		 TODO: that function should emit an event for the gameloop to listen to
+#		 TODO: there should be logic to prevent the player from switching lanes while they're in the process of moving
+		if current_lane < lanes.size() - 1:
+			current_lane += 1
+			position.y = lanes[current_lane]  
+	elif Input.is_action_just_pressed("ui_down"):
+		if current_lane > 0:
+			current_lane -= 1
+			position.y = lanes[current_lane]  
+		
+#	Horizontal Inputs
+	# Horizontal movement is not grid based, only vertical side stepping is
+	# As good practice, you should replace UI actions with custom gameplay actions.
+#	TODO: movement should be strictly analog, find something to replace action strength with
+	var horizontal_input = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
+	position.x += horizontal_input * horizontal_speed * delta
 
 
 #	Vertical Direction Handling
@@ -40,39 +58,8 @@ func _physics_process(delta):
 #	Horizontal direction handling
 
 #		FUNCT: switchVerticalDirection()
-	
-#	Horizontal Movement Handling
-	
-	# Horizontal movement is not grid based, only vertical side stepping is
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	
-	
-		#	Vertical Movement handling
-#		If you press up or down then it switches you into the corresponding lane
-#		This is done with grid based movement where each lane is a different vertical grid
-func move(direction: Vector2):
-	print(direction)
-#	Get current tile Vector2i
-	var current_tile: Vector2i = tile_map.local_to_map(global_position)
-#	Get target tile Vector2i
-	var target_tile: Vector2i = Vector2i(
-		current_tile.x + direction.x, current_tile.y + direction.y
-	)
-	print(current_tile, target_tile)
-#	Get custom data layer from the target tile to see if it's walkable
 
-	var tile_data: TileData = tile_map.get_cell_tile_data(0, target_tile)
-	
-	if tile_data.get_custom_data("is_walkable") == false:
-		return
 
-#	Move player
-	is_moving = true
-
-	global_position = tile_map.map_to_local(target_tile)
-	
-	
-	is_moving = false
 	
 	
 	#		FUNC: incrementLane()
