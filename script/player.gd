@@ -1,6 +1,25 @@
 extends CharacterBody2D
 
+class_name Player
+
 @onready var tile_map: TileMap = $"../TileMap"
+@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+
+var character_name: String = "mooskie"
+var health: int = 100
+const HORIZONTAL_SPEED = 100
+
+# Character Moveset
+var moveset: Moveset;
+
+# Character States
+var current_lane: int = 1
+var actionable = true
+
+enum current_movelist {knockdown, standard, side_step}
+enum vertical_direction {up, down, neutral}
+enum horizontal_direction {left, right}
+var attack_playing = false
 
 var is_moving = false
 
@@ -13,8 +32,6 @@ var is_moving = false
 #		STATE: seperateLane
 #TODO: this should be filled out by tilemap data rather than set values. doing it this way makes it a lot harder to add extra lanes
 var lanes = [10, -5, -20]
-var current_lane = 1
-var horizontal_speed = 100
 
 #	Character Moveset Handling
 #		STATE: normalMoveset
@@ -41,13 +58,16 @@ func handle_input(delta):
 	elif Input.is_action_just_pressed("ui_down"):
 		if current_lane > 0:
 			decrement_lane()
+	elif Input.is_action_just_pressed("a"):
+		animated_sprite.play("neutral_a")		
+
 		
 #	Horizontal Inputs
 	# Horizontal movement is not grid based, only vertical side stepping is
 	# As good practice, you should replace UI actions with custom gameplay actions.
 #	TODO: movement should be strictly analog, find something to replace action strength with
 	var horizontal_input = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
-	position.x += horizontal_input * horizontal_speed * delta
+	position.x += horizontal_input * HORIZONTAL_SPEED * delta
 
 func increment_lane():
 	current_lane += 1
