@@ -14,7 +14,7 @@ var is_moving = false
 #TODO: this should be filled out by tilemap data rather than set values. doing it this way makes it a lot harder to add extra lanes
 var lanes = [10, -5, -20]
 var current_lane = 1
-var horizontal_speed = 200
+var horizontal_speed = 100
 
 #	Character Moveset Handling
 #		STATE: normalMoveset
@@ -23,7 +23,7 @@ var horizontal_speed = 200
 
 
 func _ready():
-	position.y = lanes[current_lane]  # Set the initial position to the first lane
+	position.y = lanes[current_lane]
 
 func _process(delta):
 	handle_input(delta)
@@ -37,12 +37,10 @@ func handle_input(delta):
 #		 TODO: that function should emit an event for the gameloop to listen to
 #		 TODO: there should be logic to prevent the player from switching lanes while they're in the process of moving
 		if current_lane < lanes.size() - 1:
-			current_lane += 1
-			position.y = lanes[current_lane]  
+			increment_lane()
 	elif Input.is_action_just_pressed("ui_down"):
 		if current_lane > 0:
-			current_lane -= 1
-			position.y = lanes[current_lane]  
+			decrement_lane()
 		
 #	Horizontal Inputs
 	# Horizontal movement is not grid based, only vertical side stepping is
@@ -51,6 +49,17 @@ func handle_input(delta):
 	var horizontal_input = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
 	position.x += horizontal_input * horizontal_speed * delta
 
+func increment_lane():
+	current_lane += 1
+	position.y = lanes[current_lane]  
+	print(current_lane)
+	
+func decrement_lane():
+	current_lane -= 1
+	position.y = lanes[current_lane]  
+	print(current_lane)
+	
+	
 
 #	Vertical Direction Handling
 #		or FUNC: switchVerticalDirection() so the game loop can handle it
