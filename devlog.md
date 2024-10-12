@@ -1,4 +1,7 @@
-### 2024-10-9 - 1 hrs: gd script video (Planned)
+### 2024-10-12 - 5 hrs: started creating logic for attacks
+
+
+### 2024-10-11 - 1 hrs: gd script video
 * watched this video as right now I am relying on chatgpt as a crutch due to not knowing the language too well yet: https://www.youtube.com/watch?v=e1zJS31tr88
 
 ### 2024-10-8 - 1 hrs: Redone 3d movement Basics
