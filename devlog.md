@@ -1,4 +1,12 @@
 ### 2024-10-12 - 5 hrs: started creating logic for attacks
+* watched this video for an idea of how to structure the attacks: https://youtu.be/AaJopFFkmNo?si=ZFShACer8ItWbNcP
+* watched this video for help with classes: https://youtu.be/y3faMdIb2II?si=zNd5Z68Pa1rZqds7
+* watched this video for help with exporting enums: https://youtube.com/shorts/FEQhHfiiUBM?si=ww441WDWcpKp2RvJ
+* created a Moveset class that contains a dictionary that maps inputs to Attacks
+* created an Attack class and exported its properties to a scene so you can easily create new attacks for the moveset
+* Added new input maps for attacks
+* Added extra properties on the player including an encapsulated Moveset class and states for directions and what movelist should be used
+* When I was taking a break I was doodling and decided to put those in as placeholder assets for attack animations
 
 
 ### 2024-10-11 - 1 hrs: gd script video
