@@ -1,22 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://buerdl3aka70u"]
+[gd_scene load_steps=5 format=3 uid="uid://buerdl3aka70u"]
 
-[ext_resource type="Texture2D" uid="uid://b0gywokvyg34j" path="res://assets/sprites/knight.png" id="1_fcby5"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_j6s0f"]
-atlas = ExtResource("1_fcby5")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_mb453"]
-atlas = ExtResource("1_fcby5")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jd3ir"]
-atlas = ExtResource("1_fcby5")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_sofmt"]
-atlas = ExtResource("1_fcby5")
-region = Rect2(96, 0, 32, 32)
+[ext_resource type="Texture2D" uid="uid://d1x5j3jykj68b" path="res://assets/sprites/player/facing_neutral/idle.png" id="1_7mq65"]
+[ext_resource type="Texture2D" uid="uid://cke3ofrh8ak05" path="res://assets/sprites/player/facing_neutral/basic_attack.png" id="1_ie23c"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ds7ku"]
 animations = [{
@@ -27,16 +12,27 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_j6s0f")
+"texture": ExtResource("1_ie23c")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_mb453")
+"texture": ExtResource("1_ie23c")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_jd3ir")
+"texture": ExtResource("1_ie23c")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_sofmt")
+"texture": ExtResource("1_ie23c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_ie23c")
+}],
+"loop": false,
+"name": &"neutral_a",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_7mq65")
 }],
 "loop": true,
 "name": &"neutral_idle",
@@ -54,8 +50,8 @@ radius = 11.0
 [node name="player" type="CharacterBody2D"]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-1, -23)
-scale = Vector2(2.0625, 2.0625)
+position = Vector2(1, -21.4063)
+scale = Vector2(0.146667, 0.146667)
 sprite_frames = SubResource("SpriteFrames_ds7ku")
 animation = &"neutral_idle"
 autoplay = "neutral_idle"
