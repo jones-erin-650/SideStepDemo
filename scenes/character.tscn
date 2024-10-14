@@ -1,0 +1,63 @@
+[gd_scene load_steps=6 format=3 uid="uid://buerdl3aka70u"]
+
+[ext_resource type="Texture2D" uid="uid://d1x5j3jykj68b" path="res://assets/sprites/player/facing_neutral/idle.png" id="1_7mq65"]
+[ext_resource type="Texture2D" uid="uid://cke3ofrh8ak05" path="res://assets/sprites/player/facing_neutral/basic_attack.png" id="1_ie23c"]
+[ext_resource type="Script" path="res://script/character.gd" id="1_l30jb"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ds7ku"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"down_idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ie23c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_ie23c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_ie23c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_ie23c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_ie23c")
+}],
+"loop": false,
+"name": &"neutral_a",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_7mq65")
+}],
+"loop": true,
+"name": &"neutral_idle",
+"speed": 10.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"up_idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_15lg5"]
+radius = 11.0
+
+[node name="character" type="CharacterBody2D"]
+script = ExtResource("1_l30jb")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, -21.4063)
+scale = Vector2(0.146667, 0.146667)
+sprite_frames = SubResource("SpriteFrames_ds7ku")
+animation = &"neutral_a"
+autoplay = "neutral_idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -13)
+shape = SubResource("CircleShape2D_15lg5")
