@@ -1,23 +1,35 @@
-extends Node2D
+extends Resource
 class_name Moveset
 
 #empty dictionary
-@export var move_list = {
 #	Assigns a command input to a specific attack
 
-#	A attacks
-	"neutral+a": null,
-	"forward+a": null,
-	"down_forward+a": null,
-	"down+a": null,
-	"down_back+a": null,
-	"back+a": null,
-	"up_back+a": null,
-	"up+a": null,
-	"up_forward+a": null,
-}
+@export var neutral_a : AttackResource
+@export var forward_a : AttackResource
+@export var down_forward_a : AttackResource
+@export var down_a : AttackResource
+@export var down_back_a : AttackResource
+@export var back_a : AttackResource
+@export var up_back_a : AttackResource
+@export var up_a : AttackResource
+@export var up_forward_a : AttackResource
 
-# constructor
-func _init(custom_movelist: Dictionary):
-	if custom_movelist:
-		move_list = custom_movelist
+@export var neutral_b : AttackResource
+@export var forward_b : AttackResource
+@export var down_forward_b : AttackResource
+@export var down_b : AttackResource
+@export var down_back_b : AttackResource
+@export var back_b : AttackResource
+@export var up_back_b : AttackResource
+@export var up_b : AttackResource
+@export var up_forward_b : AttackResource
+
+@export var neutral_c : AttackResource
+@export var forward_c : AttackResource
+@export var down_forward_c : AttackResource
+@export var down_c : AttackResource
+@export var down_back_c : AttackResource
+@export var back_c : AttackResource
+@export var up_back_c : AttackResource
+@export var up_c : AttackResource
+@export var up_forward_c : AttackResource

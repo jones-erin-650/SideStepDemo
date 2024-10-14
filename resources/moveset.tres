@@ -4,13 +4,3 @@
 
 [node name="Moveset" type="Node2D"]
 script = ExtResource("1_bvldh")
-move_list = {
-"back+a": null,
-"down+a": null,
-"down_back+a": null,
-"down_forward+a": null,
-"forward+a": null,
-"up+a": null,
-"up_back+a": null,
-"up_forward+a": null
-}
