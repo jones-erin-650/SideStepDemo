@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://bcy7dnfx6x8lb"]
-
-[ext_resource type="Script" path="res://script/moveset.gd" id="1_bvldh"]
-
-[node name="Moveset" type="Node2D"]
-script = ExtResource("1_bvldh")
