@@ -1,3 +1,12 @@
+### 2024-10-14 - ? hrs: started following a fighting game tutorial because I am not getting anywhere with these input state machines
+* uses this asset pack: https://ansimuz.itch.io/streets-of-fight
+* following this tutorial: https://www.youtube.com/watch?v=gtrOIQtnJmI&t=39s
+
+### 2024-10-14 - 1.5 hrs: refactored to resources and messed with attack logic more
+* watched videos and read documentation to learn about resources: https://youtu.be/CAzdub_WO00?si=G372tupbvTyOkB6- and https://youtu.be/vzRZjM9MTGw?si=OVsTCDehpCw8Jjc_
+* changed from nodes with classes to resources for the movelist and attacks
+* tested changes by adding a second character to the game scene
+
 ### 2024-10-12 - 5 hrs: started creating logic for attacks
 * watched this video for an idea of how to structure the attacks: https://youtu.be/AaJopFFkmNo?si=ZFShACer8ItWbNcP
 * watched this video for help with classes: https://youtu.be/y3faMdIb2II?si=zNd5Z68Pa1rZqds7
