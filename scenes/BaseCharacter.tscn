@@ -1,0 +1,77 @@
+[gd_scene load_steps=10 format=3 uid="uid://buerdl3aka70u"]
+
+[ext_resource type="Texture2D" uid="uid://d1x5j3jykj68b" path="res://assets/sprites/player/facing_neutral/idle.png" id="1_7mq65"]
+[ext_resource type="Texture2D" uid="uid://cke3ofrh8ak05" path="res://assets/sprites/player/facing_neutral/basic_attack.png" id="1_ie23c"]
+[ext_resource type="Script" path="res://script/character.gd" id="1_l30jb"]
+[ext_resource type="Script" path="res://script/moveset.gd" id="2_w3bhv"]
+[ext_resource type="Script" path="res://script/character_stats.gd" id="3_p5lxs"]
+
+[sub_resource type="Resource" id="Resource_wmqn0"]
+script = ExtResource("2_w3bhv")
+
+[sub_resource type="Resource" id="Resource_l54g5"]
+script = ExtResource("3_p5lxs")
+character_name = ""
+health = 100
+HORIZONTAL_SPEED = 75
+VERTICAL_SPEED = 75
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ds7ku"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"down_idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ie23c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_ie23c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_ie23c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_ie23c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_ie23c")
+}],
+"loop": false,
+"name": &"neutral_a",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_7mq65")
+}],
+"loop": true,
+"name": &"neutral_idle",
+"speed": 10.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"up_idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_15lg5"]
+radius = 11.0
+
+[node name="character" type="CharacterBody2D"]
+script = ExtResource("1_l30jb")
+moveset = SubResource("Resource_wmqn0")
+character_stats = SubResource("Resource_l54g5")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, -21.4063)
+scale = Vector2(0.146667, 0.146667)
+sprite_frames = SubResource("SpriteFrames_ds7ku")
+animation = &"neutral_a"
+autoplay = "neutral_idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -13)
+shape = SubResource("CircleShape2D_15lg5")
