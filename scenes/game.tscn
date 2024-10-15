@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://cqwlc8tgsqx8r"]
+[gd_scene load_steps=12 format=3 uid="uid://cqwlc8tgsqx8r"]
 
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_8n3bc"]
-[ext_resource type="PackedScene" uid="uid://buerdl3aka70u" path="res://scenes/player.tscn" id="1_75ww5"]
-[ext_resource type="Script" path="res://script/player.gd" id="2_3e54q"]
+[ext_resource type="PackedScene" uid="uid://ck4sp16tmnvnr" path="res://scenes/BaseCharacter.tscn" id="1_75ww5"]
 [ext_resource type="Texture2D" uid="uid://pac2awsa3lkx" path="res://assets/sprites/world_tileset.png" id="3_ghpa0"]
+[ext_resource type="Script" path="res://script/attackresource.gd" id="4_8p7vq"]
+[ext_resource type="Script" path="res://script/moveset.gd" id="5_xycxh"]
+[ext_resource type="Script" path="res://script/character_stats.gd" id="6_lso3y"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_v5yv5"]
 texture = ExtResource("3_ghpa0")
@@ -97,8 +99,11 @@ texture = ExtResource("3_ghpa0")
 7:9/0 = 0
 0:10/0 = 0
 1:10/0 = 0
+1:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 2:10/0 = 0
+2:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 3:10/0 = 0
+3:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 4:10/0 = 0
 6:10/0 = 0
 0:11/0 = 0
@@ -138,12 +143,31 @@ custom_data_layer_0/name = "is_walkable"
 custom_data_layer_0/type = 1
 sources/0 = SubResource("TileSetAtlasSource_v5yv5")
 
+[sub_resource type="Resource" id="Resource_xfuow"]
+script = ExtResource("4_8p7vq")
+attack_name = "jab"
+attack_damage = 0
+knock_back_force = 0.0
+knocksdown = false
+target = 0
+hitstun_on_block = 0
+hitstun_on_hit = 0
+hitstun_on_counter = 0
+animation_name = ""
+
+[sub_resource type="Resource" id="Resource_e6apn"]
+script = ExtResource("5_xycxh")
+neutral_a = SubResource("Resource_xfuow")
+
+[sub_resource type="Resource" id="Resource_rcmjm"]
+script = ExtResource("6_lso3y")
+character_name = "mooskie"
+health = 100
+HORIZONTAL_SPEED = 75
+VERTICAL_SPEED = 75
+
 [node name="game" type="Node2D"]
 script = ExtResource("1_8n3bc")
-
-[node name="player" parent="." instance=ExtResource("1_75ww5")]
-position = Vector2(0, -7)
-script = ExtResource("2_3e54q")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(4, 4)
@@ -152,7 +176,10 @@ zoom = Vector2(4, 4)
 position = Vector2(0, 6)
 
 [node name="TileMap" type="TileMap" parent="."]
-z_index = -1
 tile_set = SubResource("TileSet_nc7bo")
 format = 2
 layer_0/tile_data = PackedInt32Array(-9, 65536, 10, -8, 65536, 9, -7, 65536, 9, -6, 65536, 9, -5, 65536, 9, -4, 65536, 9, -3, 65536, 9, -2, 65536, 9, -1, 65536, 9, -65536, 65536, 9, -65535, 65536, 9, -65534, 65536, 9, -65533, 65536, 9, -65532, 65536, 9, -65531, 65536, 9, -65530, 65536, 9, -65529, 65536, 9, -65528, 65536, 10, -65545, 196608, 10, -65544, 0, 9, -65543, 0, 9, -65542, 0, 9, -65541, 0, 9, -65540, 0, 9, -65539, 0, 9, -65538, 0, 9, -65537, 0, 9, -131072, 0, 9, -131071, 0, 9, -131070, 0, 9, -131069, 0, 9, -131068, 0, 9, -131067, 0, 9, -131066, 0, 9, -131065, 0, 9, -131064, 196608, 10, 65527, 131072, 10, 65528, 131072, 9, 65529, 131072, 9, 65530, 131072, 9, 65531, 131072, 9, 65532, 131072, 9, 65533, 131072, 9, 65534, 131072, 9, 65535, 131072, 9, 0, 131072, 9, 1, 131072, 9, 2, 131072, 9, 3, 131072, 9, 4, 131072, 9, 5, 131072, 9, 6, 131072, 9, 7, 131072, 9, 8, 131072, 10, 131063, 131072, 10, 131064, 131072, 10, 131065, 131072, 10, 131066, 131072, 10, 131067, 131072, 10, 131068, 131072, 10, 131069, 131072, 10, 131070, 131072, 10, 131071, 131072, 10, 65536, 131072, 10, 65537, 131072, 10, 65538, 131072, 10, 65539, 131072, 10, 65540, 131072, 10, 65541, 131072, 10, 65542, 131072, 10, 65543, 131072, 10, 65544, 131072, 10, -131081, 196608, 10, -131080, 196608, 10, -131079, 196608, 10, -131078, 196608, 10, -131077, 196608, 10, -131076, 196608, 10, -131075, 196608, 10, -131074, 196608, 10, -131073, 196608, 10, -196608, 196608, 10, -196607, 196608, 10, -196606, 196608, 10, -196605, 196608, 10, -196604, 196608, 10, -196603, 196608, 10, -196602, 196608, 10, -196601, 196608, 10, -196600, 196608, 10)
+
+[node name="character" parent="." instance=ExtResource("1_75ww5")]
+moveset = SubResource("Resource_e6apn")
+character_stats = SubResource("Resource_rcmjm")
