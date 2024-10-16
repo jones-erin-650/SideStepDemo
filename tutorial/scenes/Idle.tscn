@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dk57wvafh67ld"]
 
-[ext_resource type="Script" path="res://tutorial/scripts/player_idle_state.gd" id="1_dv2cr"]
+[ext_resource type="Script" path="res://tutorial/scripts/idle_state.gd" id="1_dv2cr"]
 
 [node name="Idle" type="Node2D"]
 script = ExtResource("1_dv2cr")
