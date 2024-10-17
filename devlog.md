@@ -1,5 +1,6 @@
-### 2024-10-15 - ? hrs: planned
-* Create a diagram for the state machine and uml diagrams for the State, PlayerStates, IdleState, and WalkState classes to better understand the inheritance between them
+### 2024-10-15 - .5-1 hrs: state and uml diagrams
+* Created uml diagrams for the State, PlayerStates, IdleState, and WalkState classes to better understand the inheritance between them
+* created a state machine diagram to plan out how I will handle SideStep states
 
 ### 2024-10-15 - 4-5 hrs: started following a fighting game tutorial because I am not getting anywhere with these input state machines
 * uses this asset pack: https://ansimuz.itch.io/streets-of-fight
