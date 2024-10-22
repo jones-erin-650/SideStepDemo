@@ -18,6 +18,8 @@ func exit(new_state: State = null) -> void:
 #	TODO: if has_stepped and the player's in the same lane as opponent, transition to that state, else do the other one
 func process_input(event: InputEvent) -> State:
 	super(event)
+#	increments or decrements the lane according to the input event
+	determine_lane_switch(event.as_text())
 	if has_stepped and event.is_action_pressed(movement_key):
 #		Flip sprite
 		print("InputEvent in sidestep_state: " + event.as_text())

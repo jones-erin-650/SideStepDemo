@@ -501,7 +501,7 @@ animation = &"idle"
 autoplay = "idle"
 frame = 1
 
-[node name="Collision" type="CollisionShape2D" parent="."]
+[node name="Collision" type="CollisionShape2D" parent="." groups=["Collision"]]
 position = Vector2(-2.5, 10.5)
 shape = SubResource("RectangleShape2D_6baep")
 
