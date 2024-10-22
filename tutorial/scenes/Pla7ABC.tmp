@@ -498,10 +498,6 @@ libraries = {
 [node name="StateMachine" parent="." node_paths=PackedStringArray("starting_state") instance=ExtResource("16_3o84e")]
 starting_state = NodePath("Idle")
 
-[node name="Idle" parent="StateMachine" node_paths=PackedStringArray("neutral_idle_state", "neutral_walk_state") groups=["States"] instance=ExtResource("17_7fhpc")]
-neutral_idle_state = NodePath(".")
-neutral_walk_state = NodePath("../Walk")
+[node name="Idle" parent="StateMachine" groups=["States"] instance=ExtResource("17_7fhpc")]
 
-[node name="Walk" parent="StateMachine" node_paths=PackedStringArray("neutral_idle_state", "neutral_walk_state") groups=["States"] instance=ExtResource("18_4oge4")]
-neutral_idle_state = NodePath("../Idle")
-neutral_walk_state = NodePath(".")
+[node name="Walk" parent="StateMachine" groups=["States"] instance=ExtResource("18_4oge4")]

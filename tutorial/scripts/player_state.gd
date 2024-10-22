@@ -6,14 +6,38 @@ extends State
 
 var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity", -9.8)
 
+# TODO: We could source these animations from resources so we don't have to handle
+# the paths and such ourselves everytimes we add something
+
 #animation names
-var idle_animation: String = "Idle"
-var walk_animation: String = "Walk"
+var neutral_idle_animation: String = "Idle"
+var neutral_walk_animation: String = "Walk"
+
+# TODO: These should be taken from attack resources to streamline development
+var punch_animation: String = "Punch"
+var jab_animation: String = "Jab"
+var kick_animation: String = "Kick"
+
+# TODO: should have its own animation
+var side_step_animation: String = "Jump"
+
+# TODO: these should have their own animations
+var upper_idle_animation: String = "Idle"
+var lower_idle_animation: String = "Idle"
+var upper_walk_animation: String = "Walk"
+var lower_walk_animation: String = "Walk"
 
 # States
 @export_group("States")
-@export var idle_state: PlayerState
-@export var walk_state: PlayerState
+@export var neutral_idle_state: PlayerState
+@export var neutral_walk_state: PlayerState
+
+@export var side_step_state: PlayerState
+
+@export var seperate_lane_idle_state: PlayerState
+@export var seperate_lane_walk_state: PlayerState
+
+
 
 # State Variables
 var sprite_flipped: bool = false
