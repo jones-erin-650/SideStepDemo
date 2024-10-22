@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://dt5ug2axwp3lj"]
+[gd_scene load_steps=49 format=3 uid="uid://dt5ug2axwp3lj"]
 
 [ext_resource type="Script" path="res://tutorial/scripts/player.gd" id="1_720xg"]
 [ext_resource type="Texture2D" uid="uid://f5ckxsv41ik1" path="res://tutorial/assets/Sprites/Brawler-Girl/Idle/idle1.png" id="1_wsibf"]
@@ -35,6 +35,8 @@
 [ext_resource type="Texture2D" uid="uid://ce2poflyo8uls" path="res://tutorial/assets/Sprites/Brawler-Girl/Punch/punch1.png" id="20_vewbl"]
 [ext_resource type="Texture2D" uid="uid://c6ihsm7wnpq3g" path="res://tutorial/assets/Sprites/Brawler-Girl/Punch/punch2.png" id="21_k0u42"]
 [ext_resource type="Texture2D" uid="uid://2a263i3c10oq" path="res://tutorial/assets/Sprites/Brawler-Girl/Punch/punch3.png" id="22_o1ge8"]
+[ext_resource type="Script" path="res://tutorial/scripts/punch_state.gd" id="36_wtg35"]
+[ext_resource type="PackedScene" uid="uid://d2106qxpu558d" path="res://tutorial/scenes/Kick.tscn" id="37_gobr1"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_kfxfc"]
 animations = [{
@@ -127,7 +129,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("22_o1ge8")
 }],
-"loop": true,
+"loop": false,
 "name": &"punch",
 "speed": 5.0
 }, {
@@ -170,141 +172,6 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6baep"]
 size = Vector2(23, 45)
 
-[sub_resource type="Animation" id="Animation_nitxd"]
-resource_name = "Idle"
-step = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"idle"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3]
-}
-
-[sub_resource type="Animation" id="Animation_weh00"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"idle"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite:sprite_frames")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [SubResource("SpriteFrames_kfxfc")]
-}
-
-[sub_resource type="Animation" id="Animation_cou2a"]
-resource_name = "Walk"
-step = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"walk"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 7]
-}
-
-[sub_resource type="Animation" id="Animation_1bbyv"]
-resource_name = "Punch"
-step = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:sprite_frames")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [SubResource("SpriteFrames_kfxfc")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite:animation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"punch"]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite:frame")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [0, 1, 2]
-}
-
 [sub_resource type="Animation" id="Animation_rrnh2"]
 resource_name = "Hurt"
 step = 0.2
@@ -343,6 +210,34 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_nitxd"]
+resource_name = "Idle"
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
 }
 
 [sub_resource type="Animation" id="Animation_x41qw"]
@@ -465,6 +360,113 @@ tracks/2/keys = {
 "values": [0, 1, 2, 4]
 }
 
+[sub_resource type="Animation" id="Animation_1bbyv"]
+resource_name = "Punch"
+step = 0.333333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:sprite_frames")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("SpriteFrames_kfxfc")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"punch"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+
+[sub_resource type="Animation" id="Animation_weh00"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite:sprite_frames")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("SpriteFrames_kfxfc")]
+}
+
+[sub_resource type="Animation" id="Animation_cou2a"]
+resource_name = "Walk"
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"walk"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 7]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dhb2v"]
 _data = {
 "Hurt": SubResource("Animation_rrnh2"),
@@ -498,10 +500,25 @@ libraries = {
 [node name="StateMachine" parent="." node_paths=PackedStringArray("starting_state") instance=ExtResource("16_3o84e")]
 starting_state = NodePath("Idle")
 
-[node name="Idle" parent="StateMachine" node_paths=PackedStringArray("neutral_idle_state", "neutral_walk_state") groups=["States"] instance=ExtResource("17_7fhpc")]
+[node name="Idle" parent="StateMachine" node_paths=PackedStringArray("neutral_idle_state", "neutral_walk_state", "punch_state", "kick_state") groups=["States"] instance=ExtResource("17_7fhpc")]
 neutral_idle_state = NodePath(".")
 neutral_walk_state = NodePath("../Walk")
+punch_state = NodePath("../PunchState")
+kick_state = NodePath("../Kick")
 
 [node name="Walk" parent="StateMachine" node_paths=PackedStringArray("neutral_idle_state", "neutral_walk_state") groups=["States"] instance=ExtResource("18_4oge4")]
 neutral_idle_state = NodePath("../Idle")
 neutral_walk_state = NodePath(".")
+
+[node name="PunchState" type="Node2D" parent="StateMachine" node_paths=PackedStringArray("neutral_idle_state", "neutral_walk_state", "punch_state", "kick_state") groups=["States"]]
+script = ExtResource("36_wtg35")
+neutral_idle_state = NodePath("../Idle")
+neutral_walk_state = NodePath("../Walk")
+punch_state = NodePath(".")
+kick_state = NodePath("../Kick")
+
+[node name="Kick" parent="StateMachine" node_paths=PackedStringArray("neutral_idle_state", "neutral_walk_state", "punch_state", "kick_state") groups=["States"] instance=ExtResource("37_gobr1")]
+neutral_idle_state = NodePath("../Idle")
+neutral_walk_state = NodePath("../Walk")
+punch_state = NodePath("../PunchState")
+kick_state = NodePath(".")

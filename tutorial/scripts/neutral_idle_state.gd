@@ -1,4 +1,4 @@
-class_name IdleState
+class_name NeutralIdleState
 extends PlayerState
 
 func enter() -> void:
@@ -16,6 +16,8 @@ func process_input(event: InputEvent) -> State:
 		print("InputEvent in upper_idle_state: " + event.as_text())
 		determine_sprite_flipped(event.as_text())
 		return neutral_walk_state
+	elif event.is_action_pressed(light_attack): return punch_state
+	elif event.is_action_pressed(heavy_attack): return kick_state
 	return null
 
 func process_physics(delta: float)	-> State:

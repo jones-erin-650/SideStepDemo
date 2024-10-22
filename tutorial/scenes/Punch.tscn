@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cukk1hjitqum7"]
+
+[ext_resource type="Script" path="res://tutorial/scripts/punch_state.gd" id="1_a0dji"]
+
+[node name="Punch" type="Node2D" node_paths=PackedStringArray("punch_state")]
+script = ExtResource("1_a0dji")
+punch_state = NodePath(".")

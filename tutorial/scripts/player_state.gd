@@ -37,6 +37,9 @@ var lower_walk_animation: String = "Walk"
 @export var seperate_lane_idle_state: PlayerState
 @export var seperate_lane_walk_state: PlayerState
 
+@export var punch_state: PunchState
+@export var kick_state: KickState
+
 
 
 # State Variables
@@ -46,6 +49,8 @@ var sprite_flipped: bool = false
 var movement_key: String = "Movement"
 var left_key: String = "Left"
 var right_key: String = "Right"
+var light_attack: String = "Light"
+var heavy_attack: String = "Heavy"
 
 #Input Action
 var left_actions: Array = InputMap.action_get_events(left_key).map(func(action: InputEvent) -> String: return action.as_text().get_slice(" (", 0))
