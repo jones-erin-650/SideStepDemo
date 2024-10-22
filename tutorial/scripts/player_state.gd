@@ -6,6 +6,10 @@ extends State
 
 var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity", -9.8)
 
+# -1 for bottom lane, 0 for middle, 1 for top
+var lanes = [-1, 0, 1]
+var currentLane: int = 0
+
 # TODO: We could source these animations from resources so we don't have to handle
 # the paths and such ourselves everytimes we add something
 
@@ -47,6 +51,7 @@ var sprite_flipped: bool = false
 
 #Input Keys
 var movement_key: String = "Movement"
+var sidestep_key: String = "Sidestep"
 var left_key: String = "Left"
 var right_key: String = "Right"
 var light_attack: String = "Light"
@@ -55,7 +60,6 @@ var heavy_attack: String = "Heavy"
 #Input Action
 var left_actions: Array = InputMap.action_get_events(left_key).map(func(action: InputEvent) -> String: return action.as_text().get_slice(" (", 0))
 var right_actions: Array = InputMap.action_get_events(right_key).map(func(action: InputEvent) -> String: return action.as_text().get_slice(" (", 0))
-
 
 #Util Fn
 func determine_sprite_flipped(event_text: String) -> void:
