@@ -1,4 +1,17 @@
-### 2024-10-22 - 1 hrs: basic attacks
+### 2024-10-23 - 2-3 hrs: lane switching prototype
+* mostly writing this for myself
+* Set up 2D physics layers for each lane and the player:
+* ![image](https://github.com/user-attachments/assets/8e080e8d-7dac-4f72-b37a-33823439d829)
+* Each physics layer in the tileset listens to the player's collision
+* ![image](https://github.com/user-attachments/assets/d3de2e56-10ff-46d0-ba90-7e819f721588)
+* Changing which layers the player collides with could be one way of switching lanes. This way we don't have to awkwardly have vertical movement be grid based with horizontal physics not be
+* ![image](https://github.com/user-attachments/assets/7f5dfca0-3ad3-4647-800a-9ad4e0667dce)
+* ![image](https://github.com/user-attachments/assets/31b043d4-d285-4449-9a24-17a680932b83)
+* ![image](https://github.com/user-attachments/assets/5397c457-a5ea-42c5-b4cd-1abca5922468)
+* This way we can also have attack hitboxes and hurtboxes on a seperate physics layer so players can be hit regardless of which lane they're in (for moves that switch lanes or track to different lanes)
+
+
+### 2024-10-21 - 1 hrs: basic attacks
 * added states for a punch and kick attack
 * pressing the attack buttons from idle transitions into these attacking states
 * entering the attacking states plays their animations
