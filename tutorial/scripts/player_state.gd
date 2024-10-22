@@ -33,13 +33,16 @@ func determine_sprite_flipped(event_text: String) -> void:
 #	If there is an input event in the left_actions array, flip the sprite
 	if left_actions.find(event_text) != -1: sprite_flipped = true
 	elif right_actions.find(event_text) != -1: sprite_flipped = false
-	print(sprite_flipped)
+	print("sprite_flipped: " + str(sprite_flipped))
 	player.sprite.flip_h = sprite_flipped
 	pass
 
 #Base Fn
 
 func process_physics(delta: float) -> State:
+#	super() should always be called in child classes with overrided methods so 
+#   generic logic that applies to all states can be contained in here, 
+#	while specific logic stays in the child states
 	player.velocity.y += gravity * delta
 	player.move_and_slide()
 	return null

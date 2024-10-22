@@ -6,6 +6,9 @@ var current_state: State
 
 func init() -> void: change_state(starting_state)
 
+# All of these child methods return State. If any of those return values are 
+# not null then the current_state is changed to the returned new_state
+
 func process_frame(delta: float) -> void:
 #	checks the frame for a new state, when the new_state is not null it changes 
 	var new_state: State = current_state.process_frame(delta)
