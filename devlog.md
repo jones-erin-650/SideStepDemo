@@ -9,6 +9,10 @@
 * ![image](https://github.com/user-attachments/assets/31b043d4-d285-4449-9a24-17a680932b83)
 * ![image](https://github.com/user-attachments/assets/5397c457-a5ea-42c5-b4cd-1abca5922468)
 * This way we can also have attack hitboxes and hurtboxes on a seperate physics layer so players can be hit regardless of which lane they're in (for moves that switch lanes or track to different lanes)
+* Created seperate states for walking and idling when the players are in the same lanes and different lanes
+* Simplified State Machine:
+* ![image](https://github.com/user-attachments/assets/5afd2e0f-ac98-4f10-afef-c0a91a6541ef)
+* Created a SideStepState that moves the player to another lane
 
 
 ### 2024-10-21 - 1 hrs: basic attacks
