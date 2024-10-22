@@ -1,3 +1,9 @@
+### 2024-10-22 - 1 hrs: basic attacks
+* added states for a punch and kick attack
+* pressing the attack buttons from idle transitions into these attacking states
+* entering the attacking states plays their animations
+* currently don't have hitboxes
+
 ### 2024-10-15 - .5-1 hrs: state and uml diagrams
 * Created uml diagrams for the State, PlayerStates, IdleState, and WalkState classes to better understand the inheritance between them
 * created a state machine diagram to plan out how I will handle SideStep states
