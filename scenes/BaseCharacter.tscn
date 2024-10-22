@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://buerdl3aka70u"]
+[gd_scene load_steps=10 format=3 uid="uid://ck4sp16tmnvnr"]
 
-[ext_resource type="Texture2D" uid="uid://d1x5j3jykj68b" path="res://assets/sprites/player/facing_neutral/idle.png" id="1_7mq65"]
-[ext_resource type="Texture2D" uid="uid://cke3ofrh8ak05" path="res://assets/sprites/player/facing_neutral/basic_attack.png" id="1_ie23c"]
+[ext_resource type="Texture2D" path="res://assets/sprites/player/facing_neutral/idle.png" id="1_7mq65"]
+[ext_resource type="Texture2D" path="res://assets/sprites/player/facing_neutral/basic_attack.png" id="1_ie23c"]
+
 [ext_resource type="Script" path="res://script/character.gd" id="1_l30jb"]
 [ext_resource type="Script" path="res://script/moveset.gd" id="2_w3bhv"]
 [ext_resource type="Script" path="res://script/character_stats.gd" id="3_p5lxs"]
