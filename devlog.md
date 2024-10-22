@@ -1,6 +1,15 @@
-### 2024-10-14 - ? hrs: started following a fighting game tutorial because I am not getting anywhere with these input state machines
+### 2024-10-15 - .5-1 hrs: state and uml diagrams
+* Created uml diagrams for the State, PlayerStates, IdleState, and WalkState classes to better understand the inheritance between them
+* created a state machine diagram to plan out how I will handle SideStep states
+
+### 2024-10-15 - 4-5 hrs: started following a fighting game tutorial because I am not getting anywhere with these input state machines
 * uses this asset pack: https://ansimuz.itch.io/streets-of-fight
 * following this tutorial: https://www.youtube.com/watch?v=gtrOIQtnJmI&t=39s
+* Implemented a state machine that handles every state a player can be in and the transitions between them
+* Structure for player states is very expandable, so adding states for lane switching shouldn't be hard
+* Idle state that plays the idle animation and waits for user left and right inputs to transition into the Walking State
+* Walking State that plays the walking animation, handles character movement, and determines whether the player sprite should be flipped horizontally or not
+* Structure for passing the sprite_flipped boolean between states during transitions
 
 ### 2024-10-14 - 1.5 hrs: refactored to resources and messed with attack logic more
 * watched videos and read documentation to learn about resources: https://youtu.be/CAzdub_WO00?si=G372tupbvTyOkB6- and https://youtu.be/vzRZjM9MTGw?si=OVsTCDehpCw8Jjc_
