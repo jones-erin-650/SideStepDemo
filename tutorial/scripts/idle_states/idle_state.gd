@@ -2,7 +2,6 @@ class_name IdleState
 extends PlayerState
 
 func enter() -> void:
-	print("Idle State")
 	player.animation.play(neutral_idle_animation)
 	
 func exit(new_state: State = null) -> void:

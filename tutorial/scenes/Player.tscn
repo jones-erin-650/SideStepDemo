@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://dt5ug2axwp3lj"]
+[gd_scene load_steps=53 format=3 uid="uid://dt5ug2axwp3lj"]
 
 [ext_resource type="Script" path="res://tutorial/scripts/player.gd" id="1_720xg"]
 [ext_resource type="Texture2D" uid="uid://f5ckxsv41ik1" path="res://tutorial/assets/Sprites/Brawler-Girl/Idle/idle1.png" id="1_wsibf"]
@@ -27,7 +27,7 @@
 [ext_resource type="Texture2D" uid="uid://cxdhq0y5gdt22" path="res://tutorial/assets/Sprites/Brawler-Girl/Kick/kick1.png" id="15_6akvj"]
 [ext_resource type="PackedScene" uid="uid://dkb85pj0dicev" path="res://tutorial/scenes/State Machine.tscn" id="16_3o84e"]
 [ext_resource type="Texture2D" uid="uid://xne2jxfa7kgb" path="res://tutorial/assets/Sprites/Brawler-Girl/Kick/kick2.png" id="16_k5k8q"]
-[ext_resource type="PackedScene" path="res://tutorial/scenes/idle_states/Idle.tscn" id="17_7fhpc"]
+[ext_resource type="PackedScene" uid="uid://dk57wvafh67ld" path="res://tutorial/scenes/idle_states/Idle.tscn" id="17_7fhpc"]
 [ext_resource type="Texture2D" uid="uid://d3k3x8pw2m15l" path="res://tutorial/assets/Sprites/Brawler-Girl/Kick/kick3.png" id="17_e3h0c"]
 [ext_resource type="Texture2D" uid="uid://u47gjr6dbiua" path="res://tutorial/assets/Sprites/Brawler-Girl/Kick/kick4.png" id="18_2dihi"]
 [ext_resource type="PackedScene" uid="uid://dh21r7fixlkav" path="res://tutorial/scenes/walk_states/Walk.tscn" id="18_4oge4"]
@@ -35,7 +35,11 @@
 [ext_resource type="Texture2D" uid="uid://ce2poflyo8uls" path="res://tutorial/assets/Sprites/Brawler-Girl/Punch/punch1.png" id="20_vewbl"]
 [ext_resource type="Texture2D" uid="uid://c6ihsm7wnpq3g" path="res://tutorial/assets/Sprites/Brawler-Girl/Punch/punch2.png" id="21_k0u42"]
 [ext_resource type="Texture2D" uid="uid://2a263i3c10oq" path="res://tutorial/assets/Sprites/Brawler-Girl/Punch/punch3.png" id="22_o1ge8"]
+[ext_resource type="PackedScene" uid="uid://dh80c2a0mf5p1" path="res://tutorial/scenes/idle_states/DL_Idle.tscn" id="34_0psqo"]
+[ext_resource type="PackedScene" uid="uid://45j21rtbu63f" path="res://tutorial/scenes/idle_states/SL_Idle.tscn" id="35_48f6q"]
+[ext_resource type="PackedScene" uid="uid://bj08y4s61u6eo" path="res://tutorial/scenes/walk_states/DL_Walk.tscn" id="36_rbjc0"]
 [ext_resource type="Script" path="res://tutorial/scripts/attack_states/punch_state.gd" id="36_wtg35"]
+[ext_resource type="PackedScene" uid="uid://1nhmo2i0slnk" path="res://tutorial/scenes/walk_states/SL_Walk.tscn" id="37_aosuo"]
 [ext_resource type="PackedScene" uid="uid://d2106qxpu558d" path="res://tutorial/scenes/attack_states/Kick.tscn" id="37_gobr1"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_kfxfc"]
@@ -506,27 +510,39 @@ libraries = {
 }
 
 [node name="StateMachine" parent="." node_paths=PackedStringArray("starting_state") instance=ExtResource("16_3o84e")]
-starting_state = NodePath("Idle")
+starting_state = NodePath("SL_Idle")
 
-[node name="Idle" parent="StateMachine" node_paths=PackedStringArray("neutral_idle_state", "neutral_walk_state", "punch_state", "kick_state") groups=["States"] instance=ExtResource("17_7fhpc")]
-neutral_idle_state = NodePath(".")
-neutral_walk_state = NodePath("../Walk")
+[node name="SL_Idle" parent="StateMachine" node_paths=PackedStringArray("sl_idle_state", "sl_walk_state", "punch_state", "kick_state") groups=["States"] instance=ExtResource("35_48f6q")]
+sl_idle_state = NodePath(".")
+sl_walk_state = NodePath("../SL_Walk")
 punch_state = NodePath("../PunchState")
 kick_state = NodePath("../Kick")
 
-[node name="Walk" parent="StateMachine" node_paths=PackedStringArray("neutral_idle_state", "neutral_walk_state") groups=["States"] instance=ExtResource("18_4oge4")]
-neutral_idle_state = NodePath("../Idle")
-neutral_walk_state = NodePath(".")
+[node name="SL_Walk" parent="StateMachine" node_paths=PackedStringArray("sl_idle_state", "sl_walk_state", "punch_state", "kick_state") groups=["States"] instance=ExtResource("37_aosuo")]
+sl_idle_state = NodePath("../SL_Idle")
+sl_walk_state = NodePath(".")
+punch_state = NodePath("../PunchState")
+kick_state = NodePath("../Kick")
 
-[node name="PunchState" type="Node2D" parent="StateMachine" node_paths=PackedStringArray("neutral_idle_state", "neutral_walk_state", "punch_state", "kick_state") groups=["States"]]
+[node name="DL_Idle" parent="StateMachine" groups=["States"] instance=ExtResource("34_0psqo")]
+
+[node name="DL_Walk" parent="StateMachine" groups=["States"] instance=ExtResource("36_rbjc0")]
+
+[node name="Idle" parent="StateMachine" node_paths=PackedStringArray("punch_state", "kick_state") groups=["States"] instance=ExtResource("17_7fhpc")]
+punch_state = NodePath("../PunchState")
+kick_state = NodePath("../Kick")
+
+[node name="Walk" parent="StateMachine" groups=["States"] instance=ExtResource("18_4oge4")]
+
+[node name="PunchState" type="Node2D" parent="StateMachine" node_paths=PackedStringArray("sl_idle_state", "sl_walk_state", "punch_state", "kick_state") groups=["States"]]
 script = ExtResource("36_wtg35")
-neutral_idle_state = NodePath("../Idle")
-neutral_walk_state = NodePath("../Walk")
+sl_idle_state = NodePath("../SL_Idle")
+sl_walk_state = NodePath("../SL_Walk")
 punch_state = NodePath(".")
 kick_state = NodePath("../Kick")
 
-[node name="Kick" parent="StateMachine" node_paths=PackedStringArray("neutral_idle_state", "neutral_walk_state", "punch_state", "kick_state") groups=["States"] instance=ExtResource("37_gobr1")]
-neutral_idle_state = NodePath("../Idle")
-neutral_walk_state = NodePath("../Walk")
+[node name="Kick" parent="StateMachine" node_paths=PackedStringArray("sl_idle_state", "sl_walk_state", "punch_state", "kick_state") groups=["States"] instance=ExtResource("37_gobr1")]
+sl_idle_state = NodePath("../SL_Idle")
+sl_walk_state = NodePath("../SL_Walk")
 punch_state = NodePath("../PunchState")
 kick_state = NodePath(".")

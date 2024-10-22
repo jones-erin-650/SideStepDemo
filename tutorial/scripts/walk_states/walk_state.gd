@@ -4,7 +4,6 @@ extends PlayerState
 const SPEED: float = 50
 
 func enter() -> void:
-	print("Walk State")
 	super()
 	player.animation.play(neutral_walk_animation)
 	
