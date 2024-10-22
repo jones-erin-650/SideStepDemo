@@ -13,6 +13,7 @@
 * Simplified State Machine:
 * ![image](https://github.com/user-attachments/assets/5afd2e0f-ac98-4f10-afef-c0a91a6541ef)
 * Created a SideStepState that moves the player to another lane
+* handles by keeping track of the player's current lane in a range from -1 to 1, and the physics layer constantly determines which collision layer the player should be on. this is determined when the SidestepState calls the determine_sidestep() function
 
 
 ### 2024-10-21 - 1 hrs: basic attacks
