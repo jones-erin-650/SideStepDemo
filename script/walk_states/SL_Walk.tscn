@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bqm4j3o426rsm"]
+
+[ext_resource type="Script" path="res://tutorial/scripts/walk_states/sl_walk_state.gd" id="1_afusw"]
+
+[node name="SL_Walk" type="Node2D"]
+script = ExtResource("1_afusw")

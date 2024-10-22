@@ -29,13 +29,13 @@ var lower_walk_animation: String = "Walk"
 
 # States
 @export_group("States")
-@export var neutral_idle_state: PlayerState
-@export var neutral_walk_state: PlayerState
+@export var sl_idle_state: PlayerState
+@export var sl_walk_state: PlayerState
+@export var dl_idle_state: PlayerState
+@export var dl_walk_state: PlayerState
+
 
 @export var side_step_state: PlayerState
-
-@export var seperate_lane_idle_state: PlayerState
-@export var seperate_lane_walk_state: PlayerState
 
 @export var punch_state: PunchState
 @export var kick_state: KickState

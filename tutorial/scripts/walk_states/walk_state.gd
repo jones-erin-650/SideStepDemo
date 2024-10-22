@@ -19,7 +19,7 @@ func process_input(event: InputEvent) -> State:
 
 func process_physics(delta: float)	-> State:
 	do_move(get_move_direction())
-	if get_move_direction() == 0.0: return neutral_idle_state
+	if get_move_direction() == 0.0: return sl_idle_state
 	super(delta)
 	return null
 	
