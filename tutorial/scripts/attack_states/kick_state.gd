@@ -1,12 +1,18 @@
 class_name KickState
 extends PlayerState
 
+@onready var hitbox: Area2D = $HitBox
 
 var has_attacked: bool
 
 func enter() -> void:
 	print("Kick State")
 	has_attacked = false
+	
+	#	TODO: This should definitely be handled by a super() call to a generic Attack state
+	if sprite_flipped: hitbox.scale.x = -1
+	else: hitbox.scale.x = 1
+	
 	player.animation.play(kick_animation)
 	
 #	has_attacked indicates that the attack finished and the state can transition
