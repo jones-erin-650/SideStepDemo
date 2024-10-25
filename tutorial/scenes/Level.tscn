@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://c03rebqxoooub"]
+[gd_scene load_steps=7 format=3 uid="uid://c03rebqxoooub"]
 
 [ext_resource type="Texture2D" uid="uid://bph4o28lqb6y0" path="res://tutorial/assets/Stage Layers/tileset.png" id="1_r55ks"]
 [ext_resource type="PackedScene" uid="uid://dt5ug2axwp3lj" path="res://tutorial/scenes/Player.tscn" id="2_ilblf"]
+[ext_resource type="Script" path="res://script/hitboxes/hurtbox.gd" id="3_l8ckm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_42wmc"]
 texture = ExtResource("1_r55ks")
@@ -559,6 +560,9 @@ physics_layer_2/collision_layer = 16
 physics_layer_2/collision_mask = 2
 sources/0 = SubResource("TileSetAtlasSource_42wmc")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oi4n6"]
+size = Vector2(20, 182)
+
 [node name="Level" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -581,3 +585,11 @@ zoom = Vector2(4, 4)
 position = Vector2(3, -8)
 collision_layer = 2
 collision_mask = 4
+
+[node name="HurtBox" type="Area2D" parent="."]
+script = ExtResource("3_l8ckm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(80, 0)
+shape = SubResource("RectangleShape2D_oi4n6")
+debug_color = Color(0.124807, 0.521009, 1, 0.42)
