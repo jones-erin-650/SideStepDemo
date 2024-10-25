@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://dt5ug2axwp3lj"]
+[gd_scene load_steps=59 format=3 uid="uid://dt5ug2axwp3lj"]
 
 [ext_resource type="Script" path="res://tutorial/scripts/player.gd" id="1_720xg"]
 [ext_resource type="Texture2D" uid="uid://f5ckxsv41ik1" path="res://tutorial/assets/Sprites/Brawler-Girl/Idle/idle1.png" id="1_wsibf"]
@@ -42,6 +42,8 @@
 [ext_resource type="PackedScene" uid="uid://1nhmo2i0slnk" path="res://tutorial/scenes/walk_states/SL_Walk.tscn" id="37_aosuo"]
 [ext_resource type="PackedScene" uid="uid://d2106qxpu558d" path="res://tutorial/scenes/attack_states/Kick.tscn" id="37_gobr1"]
 [ext_resource type="PackedScene" uid="uid://dkbur8b8s1kci" path="res://tutorial/scenes/Sidestep.tscn" id="42_cw25u"]
+[ext_resource type="Script" path="res://script/hitboxes/hitbox.gd" id="42_qo6cp"]
+[ext_resource type="Script" path="res://script/hitboxes/hurtbox.gd" id="44_ts0d0"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_kfxfc"]
 animations = [{
@@ -365,10 +367,22 @@ tracks/2/path = NodePath("Sprite:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("StateMachine/Kick/HitBox/CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.6, 0.8),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 4]
+"values": [true, true, false, true]
 }
 
 [sub_resource type="Animation" id="Animation_1bbyv"]
@@ -411,6 +425,18 @@ tracks/2/keys = {
 "update": 1,
 "values": [0, 1, 2]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("StateMachine/Punch/HitBox/CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, true, false]
+}
 
 [sub_resource type="Animation" id="Animation_weh00"]
 length = 0.001
@@ -449,6 +475,30 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [SubResource("SpriteFrames_kfxfc")]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("StateMachine/Punch/HitBox/CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("StateMachine/Kick/HitBox/CollisionShape2D:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_cou2a"]
@@ -492,6 +542,15 @@ _data = {
 "Walk": SubResource("Animation_cou2a")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_joxhc"]
+size = Vector2(19, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4l0d8"]
+size = Vector2(32, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jtyc6"]
+size = Vector2(16, 45)
+
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_720xg")
 
@@ -517,13 +576,13 @@ starting_state = NodePath("SL_Idle")
 sl_idle_state = NodePath(".")
 sl_walk_state = NodePath("../SL_Walk")
 side_step_state = NodePath("../Sidestep")
-punch_state = NodePath("../PunchState")
+punch_state = NodePath("../Punch")
 kick_state = NodePath("../Kick")
 
 [node name="SL_Walk" parent="StateMachine" node_paths=PackedStringArray("sl_idle_state", "sl_walk_state", "punch_state", "kick_state") groups=["States"] instance=ExtResource("37_aosuo")]
 sl_idle_state = NodePath("../SL_Idle")
 sl_walk_state = NodePath(".")
-punch_state = NodePath("../PunchState")
+punch_state = NodePath("../Punch")
 kick_state = NodePath("../Kick")
 
 [node name="DL_Idle" parent="StateMachine" groups=["States"] instance=ExtResource("34_0psqo")]
@@ -535,20 +594,47 @@ sl_idle_state = NodePath("../SL_Idle")
 dl_idle_state = NodePath("../DL_Idle")
 
 [node name="Idle" parent="StateMachine" node_paths=PackedStringArray("punch_state", "kick_state") groups=["States"] instance=ExtResource("17_7fhpc")]
-punch_state = NodePath("../PunchState")
+punch_state = NodePath("../Punch")
 kick_state = NodePath("../Kick")
 
 [node name="Walk" parent="StateMachine" groups=["States"] instance=ExtResource("18_4oge4")]
 
-[node name="PunchState" type="Node2D" parent="StateMachine" node_paths=PackedStringArray("sl_idle_state", "sl_walk_state", "punch_state", "kick_state") groups=["States"]]
+[node name="Punch" type="Node2D" parent="StateMachine" node_paths=PackedStringArray("sl_idle_state", "sl_walk_state", "punch_state", "kick_state") groups=["States"]]
+visible = false
 script = ExtResource("36_wtg35")
 sl_idle_state = NodePath("../SL_Idle")
 sl_walk_state = NodePath("../SL_Walk")
 punch_state = NodePath(".")
 kick_state = NodePath("../Kick")
 
+[node name="HitBox" type="Area2D" parent="StateMachine/Punch"]
+script = ExtResource("42_qo6cp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StateMachine/Punch/HitBox"]
+position = Vector2(26.5, -1)
+shape = SubResource("RectangleShape2D_joxhc")
+debug_color = Color(0.656323, 0.516598, 0, 0.42)
+
 [node name="Kick" parent="StateMachine" node_paths=PackedStringArray("sl_idle_state", "sl_walk_state", "punch_state", "kick_state") groups=["States"] instance=ExtResource("37_gobr1")]
 sl_idle_state = NodePath("../SL_Idle")
 sl_walk_state = NodePath("../SL_Walk")
-punch_state = NodePath("../PunchState")
+punch_state = NodePath("../Punch")
 kick_state = NodePath(".")
+
+[node name="HitBox" type="Area2D" parent="StateMachine/Kick"]
+script = ExtResource("42_qo6cp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StateMachine/Kick/HitBox"]
+position = Vector2(16, 7)
+shape = SubResource("RectangleShape2D_4l0d8")
+debug_color = Color(0.636607, 0.526557, 1.92523e-07, 0.42)
+
+[node name="Pain" type="Node2D" parent="StateMachine"]
+
+[node name="HurtBox" type="Area2D" parent="StateMachine/Pain"]
+script = ExtResource("44_ts0d0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StateMachine/Pain/HurtBox"]
+position = Vector2(-3, 9.5)
+shape = SubResource("RectangleShape2D_jtyc6")
+debug_color = Color(0.696533, 0.367802, 0.84001, 0.42)
