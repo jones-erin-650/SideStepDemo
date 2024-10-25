@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://45j21rtbu63f"]
+
+[ext_resource type="Script" path="res://tutorial/scripts/idle_states/sl_idle_state.gd" id="1_kvl5k"]
+
+[node name="SL_Idle" type="Node2D"]
+script = ExtResource("1_kvl5k")
