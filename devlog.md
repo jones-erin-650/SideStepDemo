@@ -1,3 +1,9 @@
+### 2024-10-23 - 1 hrs: hitboxes and hurtboxes
+* added hitboxes to the attack animations
+* they are only enabled during the active frames of an attack
+* hitboxes are tied to the animations
+* characters have hurtboxes that wait for hitboxes to enter them then deal damage
+
 ### 2024-10-23 - 2-3 hrs: lane switching prototype
 * mostly writing this for myself
 * Set up 2D physics layers for each lane and the player:
