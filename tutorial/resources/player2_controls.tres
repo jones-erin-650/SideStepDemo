@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="PlayerControls" load_steps=2 format=3 uid="uid://blxy8oe2gp08e"]
+
+[ext_resource type="Script" path="res://tutorial/scripts/player_controls.gd" id="1_q8gtr"]
+
+[resource]
+script = ExtResource("1_q8gtr")
+player_index = 1
+movement_key = "P2_Movement"
+sidestep_key = "P2_Sidestep"
+left_key = "P2_Left"
+right_key = "P2_Right"
+up_key = "P2_Up"
+down_key = "P2_Down"
+light_attack = "P2_Light"
+heavy_attack = "P2_Heavy"
