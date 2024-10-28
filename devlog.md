@@ -1,4 +1,11 @@
-### 2024-10-23 - 1 hrs: hitboxes and hurtboxes
+### 2024-10-27 - 2 hrs: multiplayer (failed)
+* tried and failed to implement local multiplayer to the game
+* I attempted this by having two seperate inputmaps in a PlayerControl resource, then have the PlayerStates reference those inputs for the control logic
+* However, there was a null pointer problem that I wasn't able to resolve as the resource is stored in the Player node, and the PlayerStates are loaded differently than that
+* Getting a reference to that control map kept going wrong.
+
+
+### 2024-10-25 - 1 hrs: hitboxes and hurtboxes
 * added hitboxes to the attack animations
 * they are only enabled during the active frames of an attack
 * hitboxes are tied to the animations
