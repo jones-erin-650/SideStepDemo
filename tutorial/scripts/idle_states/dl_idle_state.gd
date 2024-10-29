@@ -11,7 +11,7 @@ func exit(new_state: State = null) -> void:
 # TODO: Different Lane attacking logic
 func process_input(event: InputEvent) -> State:
 	super(event)
-	if event.is_action_pressed(movement_key):
+	if event.is_action_pressed(controls.movement_key):
 #		Flip sprite
 		print("InputEvent in upper_idle_state: " + event.as_text())
 		determine_sprite_flipped(event.as_text())
