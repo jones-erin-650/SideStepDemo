@@ -2,6 +2,8 @@
 * controls are now handled by a controls resource in player
 * that controls variable is used through the Player reference in each State class, allowing them to call player.controls.left_key instead of left_key being a hardcoded string
 * null pointer errors were avoided by changing the order of operations of the @onready variables, and making a couple variables that relied on player.controls also called @onready
+* Refactored the Player reference in PlayerState to use get_parent() instead of getting a node in a group. This makes having two player scenes much easier as they don't have to reference two different groups and can instead just reference their parent nodes.
+* Multiplayer now works!
 
 
 ### 2024-10-27 - 2 hrs: multiplayer (failed)
