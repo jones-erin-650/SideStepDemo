@@ -1,3 +1,9 @@
+### 2024-10-29 - 2 hrs: player controls refactoring and multiplayer
+* controls are now handled by a controls resource in player
+* that controls variable is used through the Player reference in each State class, allowing them to call player.controls.left_key instead of left_key being a hardcoded string
+* null pointer errors were avoided by changing the order of operations of the @onready variables, and making a couple variables that relied on player.controls also called @onready
+
+
 ### 2024-10-27 - 2 hrs: multiplayer (failed)
 * tried and failed to implement local multiplayer to the game
 * I attempted this by having two seperate inputmaps in a PlayerControl resource, then have the PlayerStates reference those inputs for the control logic
