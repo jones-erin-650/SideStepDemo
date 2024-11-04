@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bjtnfw231bxmn"]
+
+[ext_resource type="Script" path="res://tutorial/scripts/sidestep-states/sidestep_down_state.gd" id="1_y8n76"]
+
+[node name="SidestepDown" type="Node2D"]
+script = ExtResource("1_y8n76")
