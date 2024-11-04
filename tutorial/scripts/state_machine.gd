@@ -4,7 +4,9 @@ extends Node
 var current_state: State
 @export var starting_state: State
 
-func init() -> void: change_state(starting_state)
+func init() -> void: 
+	print("StateMachine init()")
+	change_state(starting_state)
 
 # All of these child methods return State. If any of those return values are 
 # not null then the current_state is changed to the returned new_state

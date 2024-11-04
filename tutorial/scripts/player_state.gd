@@ -3,7 +3,12 @@ extends State
 
 #only difference between this class and state is the reference to the player node
 @onready var player: Player = get_tree().get_first_node_in_group("Player")
-@onready var collision: CollisionShape2D = get_tree().get_first_node_in_group("Collision")
+#@onready var animation: AnimationPlayer = get_tree().get_first_node_in_group("Animation")
+@onready var animation: AnimationPlayer = player.animation
+
+@onready var collision: CollisionShape2D = player.collision
+
+@onready var controls: PlayerControls = player.controls
 
 var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity", -9.8)
 
@@ -35,7 +40,6 @@ var lower_walk_animation: String = "Walk"
 @export var dl_idle_state: PlayerState
 @export var dl_walk_state: PlayerState
 
-
 @export var side_step_state: PlayerState
 
 @export var punch_state: PunchState
@@ -50,21 +54,21 @@ var lanes = [-1, 0, 1]
 var current_lane: int = 0
 
 #Input Keys
-var movement_key: String = "Movement"
-var sidestep_key: String = "Sidestep"
-var left_key: String = "Left"
-var right_key: String = "Right"
-var up_key: String = "Up"
-var down_key: String = "Down"
-var light_attack: String = "Light"
-var heavy_attack: String = "Heavy"
+#var movement_key: String = "Movement"
+#var sidestep_key: String = "Sidestep"
+#var left_key: String = "Left"
+#var right_key: String = "Right"
+#var up_key: String = "Up"
+#var down_key: String = "Down"
+#var light_attack: String = "Light"
+#var heavy_attack: String = "Heavy"
 
 #Input Action
-var left_actions: Array = InputMap.action_get_events(left_key).map(func(action: InputEvent) -> String: return action.as_text().get_slice(" (", 0))
-var right_actions: Array = InputMap.action_get_events(right_key).map(func(action: InputEvent) -> String: return action.as_text().get_slice(" (", 0))
+@onready var left_actions: Array = InputMap.action_get_events(controls.left_key).map(func(action: InputEvent) -> String: return action.as_text().get_slice(" (", 0))
+@onready var right_actions: Array = InputMap.action_get_events(controls.right_key).map(func(action: InputEvent) -> String: return action.as_text().get_slice(" (", 0))
 
-var up_actions: Array = InputMap.action_get_events(up_key).map(func(action: InputEvent) -> String: return action.as_text().get_slice(" (", 0))
-var down_actions: Array = InputMap.action_get_events(down_key).map(func(action: InputEvent) -> String: return action.as_text().get_slice(" (", 0))
+@onready var up_actions: Array = InputMap.action_get_events(controls.up_key).map(func(action: InputEvent) -> String: return action.as_text().get_slice(" (", 0))
+@onready var down_actions: Array = InputMap.action_get_events(controls.down_key).map(func(action: InputEvent) -> String: return action.as_text().get_slice(" (", 0))
 
 #Util Fn
 func determine_sprite_flipped(event_text: String) -> void:
@@ -75,6 +79,7 @@ func determine_sprite_flipped(event_text: String) -> void:
 	player.sprite.flip_h = sprite_flipped
 	pass
 
+# TODO: Just make seperate SideStepUp and Down states
 # Returns 1 if you're trying to sidestep up, returns -1 for sidestep down, and 0 for unable to sidestep
 func determine_lane_switch(event_text: String) -> void:
 	#	If there is an input event in the vertical actions array and you can sidestep in that direction, increment the lane
@@ -93,6 +98,14 @@ func can_sidestep_down() -> bool:
 	return false
 
 #Base Fn
+	
+func _ready():
+#	just used for debugging now
+	print("PlayerState _ready()")
+	print("Player: " + str(player))
+	print("Collision: " + str(collision))
+	print("Animation: " + str(animation))
+	print("PlayerControls: " + str(controls))
 
 #TODO: Not sure if this should be handled this way
 #TODO: For some reason you can sidestep during a side step animation

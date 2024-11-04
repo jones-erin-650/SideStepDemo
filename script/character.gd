@@ -49,16 +49,16 @@ func handle_input(delta):
 	# Vertical Inputs
 #		If you press up or down then it switches you into the corresponding lane
 #		This is done with grid based movement where each lane is a different vertical grid
-	if Input.is_action_just_pressed("ui_up"):
+	if Input.is_action_just_pressed("Up"):
 #        TODO: incrementing and decrementing the lanes should be handled by a function 
 #		 TODO: that function should emit an event for the gameloop to listen to
 #		 TODO: there should be logic to prevent the player from switching lanes while they're in the process of moving
 		if current_lane < lanes.size() - 1:
 			increment_lane()
-	elif Input.is_action_just_pressed("ui_down"):
+	elif Input.is_action_just_pressed("Down"):
 		if current_lane > 0:
 			decrement_lane()
-	elif Input.is_action_just_pressed("a"):
+	elif Input.is_action_just_pressed("Light"):
 		animated_sprite.play("neutral_a")
 
 
@@ -68,7 +68,7 @@ func handle_input(delta):
 	# Horizontal movement is not grid based, only vertical side stepping is
 	# As good practice, you should replace UI actions with custom gameplay actions.
 #	TODO: movement should be strictly analog, find something to replace action strength with
-	var horizontal_input = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
+	var horizontal_input = Input.get_action_strength("Right") - Input.get_action_strength("Left")
 	position.x += horizontal_input * character_stats.HORIZONTAL_SPEED * delta
 
 func increment_lane():
