@@ -14,7 +14,7 @@ func get_controls() -> PlayerControls:
 	return controls as PlayerControls
 
 func _ready(): 
-	print("Player Node _ready()")
+	print("Player ", controls.player_index, "_ready()")
 	print("Controls: ", controls)
 	print("Animation: ", state_machine)
 	print("Sprite: ", sprite)

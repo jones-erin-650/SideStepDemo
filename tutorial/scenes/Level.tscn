@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://c03rebqxoooub"]
+[gd_scene load_steps=8 format=3 uid="uid://c03rebqxoooub"]
 
 [ext_resource type="Texture2D" uid="uid://bph4o28lqb6y0" path="res://tutorial/assets/Stage Layers/tileset.png" id="1_r55ks"]
 [ext_resource type="PackedScene" uid="uid://dt5ug2axwp3lj" path="res://tutorial/scenes/Player.tscn" id="2_ilblf"]
+[ext_resource type="Resource" uid="uid://blxy8oe2gp08e" path="res://tutorial/resources/player2_controls.tres" id="3_3upyh"]
 [ext_resource type="Script" path="res://script/hitboxes/hurtbox.gd" id="3_l8ckm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_42wmc"]
@@ -581,10 +582,13 @@ layer_3/z_index = -2
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(4, 4)
 
-[node name="Player" parent="." instance=ExtResource("2_ilblf")]
-position = Vector2(3, -8)
+[node name="Player1" parent="." groups=["Player1"] instance=ExtResource("2_ilblf")]
+position = Vector2(-63, 10)
 collision_layer = 2
 collision_mask = 4
+
+[node name="Player2" parent="." groups=["Player2"] instance=ExtResource("2_ilblf")]
+controls = ExtResource("3_3upyh")
 
 [node name="HurtBox" type="Area2D" parent="."]
 script = ExtResource("3_l8ckm")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://dt5ug2axwp3lj"]
+[gd_scene load_steps=62 format=3 uid="uid://dt5ug2axwp3lj"]
 
 [ext_resource type="Script" path="res://tutorial/scripts/player.gd" id="1_720xg"]
 [ext_resource type="Texture2D" uid="uid://f5ckxsv41ik1" path="res://tutorial/assets/Sprites/Brawler-Girl/Idle/idle1.png" id="1_wsibf"]
@@ -42,7 +42,9 @@
 [ext_resource type="Script" path="res://tutorial/scripts/attack_states/punch_state.gd" id="36_wtg35"]
 [ext_resource type="PackedScene" uid="uid://1nhmo2i0slnk" path="res://tutorial/scenes/walk_states/SL_Walk.tscn" id="37_aosuo"]
 [ext_resource type="PackedScene" uid="uid://d2106qxpu558d" path="res://tutorial/scenes/attack_states/Kick.tscn" id="37_gobr1"]
-[ext_resource type="PackedScene" uid="uid://dkbur8b8s1kci" path="res://tutorial/scenes/Sidestep.tscn" id="42_cw25u"]
+[ext_resource type="PackedScene" uid="uid://1467trqshptw" path="res://tutorial/scenes/sidestep_states/SidestepUp.tscn" id="40_4tr8w"]
+[ext_resource type="PackedScene" uid="uid://bjtnfw231bxmn" path="res://tutorial/scenes/sidestep_states/SidestepDown.tscn" id="41_2qxwo"]
+[ext_resource type="PackedScene" uid="uid://dkbur8b8s1kci" path="res://tutorial/scenes/sidestep_states/Sidestep.tscn" id="42_cw25u"]
 [ext_resource type="Script" path="res://script/hitboxes/hitbox.gd" id="42_qo6cp"]
 [ext_resource type="Script" path="res://script/hitboxes/hurtbox.gd" id="44_ts0d0"]
 
@@ -571,13 +573,14 @@ libraries = {
 "": SubResource("AnimationLibrary_dhb2v")
 }
 
-[node name="StateMachine" parent="." node_paths=PackedStringArray("starting_state") instance=ExtResource("16_3o84e")]
-starting_state = NodePath("SL_Idle")
+[node name="StateMachine" parent="." instance=ExtResource("16_3o84e")]
 
-[node name="SL_Idle" parent="StateMachine" node_paths=PackedStringArray("sl_idle_state", "sl_walk_state", "side_step_state", "punch_state", "kick_state") groups=["States"] instance=ExtResource("35_48f6q")]
+[node name="SL_Idle" parent="StateMachine" node_paths=PackedStringArray("sl_idle_state", "sl_walk_state", "side_step_state", "sidestep_up_state", "sidestep_down_state", "punch_state", "kick_state") groups=["States"] instance=ExtResource("35_48f6q")]
 sl_idle_state = NodePath(".")
 sl_walk_state = NodePath("../SL_Walk")
 side_step_state = NodePath("../Sidestep")
+sidestep_up_state = NodePath("../SidestepUp")
+sidestep_down_state = NodePath("../SidestepDown")
 punch_state = NodePath("../Punch")
 kick_state = NodePath("../Kick")
 
@@ -594,6 +597,10 @@ kick_state = NodePath("../Kick")
 [node name="Sidestep" parent="StateMachine" node_paths=PackedStringArray("sl_idle_state", "dl_idle_state") groups=["States"] instance=ExtResource("42_cw25u")]
 sl_idle_state = NodePath("../SL_Idle")
 dl_idle_state = NodePath("../DL_Idle")
+
+[node name="SidestepUp" parent="StateMachine" groups=["States"] instance=ExtResource("40_4tr8w")]
+
+[node name="SidestepDown" parent="StateMachine" groups=["States"] instance=ExtResource("41_2qxwo")]
 
 [node name="Idle" parent="StateMachine" node_paths=PackedStringArray("punch_state", "kick_state") groups=["States"] instance=ExtResource("17_7fhpc")]
 punch_state = NodePath("../Punch")

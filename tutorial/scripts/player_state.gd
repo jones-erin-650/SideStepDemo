@@ -2,7 +2,10 @@ class_name PlayerState
 extends State
 
 #only difference between this class and state is the reference to the player node
-@onready var player: Player = get_tree().get_first_node_in_group("Player")
+#@onready var player: Player = get_tree().get_first_node_in_group("Player")
+# Using this instead of the node groups so it's easier to connect this class to the player node when having two players
+# if I used groups then they would both point to the same Player node
+@onready var player: Player = self.get_parent().get_parent()
 #@onready var animation: AnimationPlayer = get_tree().get_first_node_in_group("Animation")
 @onready var animation: AnimationPlayer = player.animation
 
@@ -41,9 +44,13 @@ var lower_walk_animation: String = "Walk"
 @export var dl_walk_state: PlayerState
 
 @export var side_step_state: PlayerState
+@export var sidestep_up_state: PlayerState
+@export var sidestep_down_state: PlayerState
 
 @export var punch_state: PunchState
 @export var kick_state: KickState
+
+
 
 
 
@@ -99,13 +106,13 @@ func can_sidestep_down() -> bool:
 
 #Base Fn
 	
-func _ready():
+#func _ready():
 #	just used for debugging now
-	print("PlayerState _ready()")
-	print("Player: " + str(player))
-	print("Collision: " + str(collision))
-	print("Animation: " + str(animation))
-	print("PlayerControls: " + str(controls))
+	#print("PlayerState _ready()")
+	#print("Player: " + str(player))
+	#print("Collision: " + str(collision))
+	#print("Animation: " + str(animation))
+	#print("PlayerControls: " + str(controls))
 
 #TODO: Not sure if this should be handled this way
 #TODO: For some reason you can sidestep during a side step animation
