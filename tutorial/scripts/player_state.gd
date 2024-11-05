@@ -52,12 +52,9 @@ var lower_walk_animation: String = "Walk"
 @export var punch_state: PunchState
 @export var kick_state: KickState
 
-
-
-
-
 # State Variables
-var sprite_flipped: bool = false
+@onready var sprite_flipped: bool = controls.is_second_player
+
 # -1 for bottom lane, 0 for middle, 1 for top
 var lanes = [-1, 0, 1]
 var current_lane: int = 0
@@ -100,15 +97,6 @@ func can_sidestep_down() -> bool:
 	return false
 
 #Base Fn
-	
-#func _ready():
-#	just used for debugging now
-	#print("PlayerState _ready()")
-	#print("Player: " + str(player))
-	#print("Collision: " + str(collision))
-	#print("Animation: " + str(animation))
-	#print("PlayerControls: " + str(controls))
-
 
 func process_physics(delta: float) -> State:
 #	super() should always be called in child classes with overrided methods so 

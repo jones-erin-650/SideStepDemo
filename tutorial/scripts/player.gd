@@ -14,13 +14,16 @@ func get_controls() -> PlayerControls:
 	return controls as PlayerControls
 
 func _ready(): 
-	print("Player ", controls.player_index, "_ready()")
+	print("Player 1:", controls.is_second_player, "_ready()")
 	print("Controls: ", controls)
 	print("Animation: ", state_machine)
 	print("Sprite: ", sprite)
 	print("Collision: ", collision)
 	print("Animation: ", animation)
 	print("StateMachine: ", state_machine)
+	
+#	make sure player 2 is facing the right direction at the start
+	if controls.is_second_player: sprite.flip_h = true
 	state_machine.init()
 
 
