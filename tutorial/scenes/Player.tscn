@@ -57,7 +57,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("3_l5vmi")
 }],
-"loop": true,
+"loop": false,
 "name": &"hurt",
 "speed": 5.0
 }, {
@@ -88,7 +88,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("10_imi21")
 }],
-"loop": true,
+"loop": false,
 "name": &"jab",
 "speed": 5.0
 }, {
@@ -105,7 +105,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("14_83pr0")
 }],
-"loop": true,
+"loop": false,
 "name": &"jump",
 "speed": 5.0
 }, {
@@ -125,7 +125,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("19_elom5")
 }],
-"loop": true,
+"loop": false,
 "name": &"kick",
 "speed": 5.0
 }, {
@@ -573,7 +573,8 @@ libraries = {
 "": SubResource("AnimationLibrary_dhb2v")
 }
 
-[node name="StateMachine" parent="." instance=ExtResource("16_3o84e")]
+[node name="StateMachine" parent="." node_paths=PackedStringArray("starting_state") instance=ExtResource("16_3o84e")]
+starting_state = NodePath("SL_Idle")
 
 [node name="SL_Idle" parent="StateMachine" node_paths=PackedStringArray("sl_idle_state", "sl_walk_state", "side_step_state", "sidestep_up_state", "sidestep_down_state", "punch_state", "kick_state") groups=["States"] instance=ExtResource("35_48f6q")]
 sl_idle_state = NodePath(".")
@@ -598,9 +599,13 @@ kick_state = NodePath("../Kick")
 sl_idle_state = NodePath("../SL_Idle")
 dl_idle_state = NodePath("../DL_Idle")
 
-[node name="SidestepUp" parent="StateMachine" groups=["States"] instance=ExtResource("40_4tr8w")]
+[node name="SidestepUp" parent="StateMachine" node_paths=PackedStringArray("sl_idle_state", "sl_walk_state") groups=["States"] instance=ExtResource("40_4tr8w")]
+sl_idle_state = NodePath("../SL_Idle")
+sl_walk_state = NodePath("../SL_Walk")
 
-[node name="SidestepDown" parent="StateMachine" groups=["States"] instance=ExtResource("41_2qxwo")]
+[node name="SidestepDown" parent="StateMachine" node_paths=PackedStringArray("sl_idle_state", "sl_walk_state") groups=["States"] instance=ExtResource("41_2qxwo")]
+sl_idle_state = NodePath("../SL_Idle")
+sl_walk_state = NodePath("../SL_Walk")
 
 [node name="Idle" parent="StateMachine" node_paths=PackedStringArray("punch_state", "kick_state") groups=["States"] instance=ExtResource("17_7fhpc")]
 punch_state = NodePath("../Punch")

@@ -17,6 +17,9 @@ func process_input(event: InputEvent) -> State:
 		return sl_walk_state
 	elif event.is_action_pressed(controls.light_attack): return punch_state
 	elif event.is_action_pressed(controls.heavy_attack): return kick_state
+	elif event.is_action_pressed(controls.up_key): return sidestep_up_state
+	elif event.is_action_pressed(controls.down_key): return sidestep_down_state
+
 	return null
 
 func process_physics(delta: float)	-> State:

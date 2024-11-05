@@ -15,6 +15,8 @@ extends State
 
 var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity", -9.8)
 
+@onready var SIDESTEP_DISTANCE_Y: int = 15
+
 # TODO: We could source these animations from resources so we don't have to handle
 # the paths and such ourselves everytimes we add something
 
@@ -86,13 +88,6 @@ func determine_sprite_flipped(event_text: String) -> void:
 	player.sprite.flip_h = sprite_flipped
 	pass
 
-# TODO: Just make seperate SideStepUp and Down states
-# Returns 1 if you're trying to sidestep up, returns -1 for sidestep down, and 0 for unable to sidestep
-func determine_lane_switch(event_text: String) -> void:
-	#	If there is an input event in the vertical actions array and you can sidestep in that direction, increment the lane
-	if up_actions.find(event_text) != -1 and can_sidestep_up(): current_lane+=1
-	if down_actions.find(event_text) != -1 and can_sidestep_down(): current_lane-=1
-	pass
 	
 func can_sidestep_up() -> bool:
 	if current_lane < 1:
@@ -114,30 +109,13 @@ func can_sidestep_down() -> bool:
 	#print("Animation: " + str(animation))
 	#print("PlayerControls: " + str(controls))
 
-#TODO: Not sure if this should be handled this way
-#TODO: For some reason you can sidestep during a side step animation
+
 func process_physics(delta: float) -> State:
 #	super() should always be called in child classes with overrided methods so 
 #   generic logic that applies to all states can be contained in here, 
 #	while specific logic stays in the child states
-	player.velocity.y += gravity * delta
+	#player.velocity.y += gravity * delta
 	player.move_and_slide()
-	
-	
-	match current_lane:
-		-1:
-			player.set_collision_mask_value(3, true)
-			player.set_collision_mask_value(4, false)
-			player.set_collision_mask_value(5, false)
-			
-		0:
-			player.set_collision_mask_value(3, false)
-			player.set_collision_mask_value(4, true)
-			player.set_collision_mask_value(5, false)
-		1:
-			player.set_collision_mask_value(3, false)
-			player.set_collision_mask_value(4, false)
-			player.set_collision_mask_value(5, true)
 	
 	return null
 	
