@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://jfox2aewl1k4"]
+
+[ext_resource type="Script" path="res://tutorial/scripts/hitboxes/lane_collision.gd" id="1_yhtc8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8cwoi"]
+size = Vector2(343, 16)
+
+[node name="Lane" type="Area2D"]
+script = ExtResource("1_yhtc8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(8, 56)
+shape = SubResource("RectangleShape2D_8cwoi")
+debug_color = Color(0.900155, 0.311899, 0, 0.42)

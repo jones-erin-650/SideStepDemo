@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=3 uid="uid://dt5ug2axwp3lj"]
+[gd_scene load_steps=64 format=3 uid="uid://dt5ug2axwp3lj"]
 
 [ext_resource type="Script" path="res://tutorial/scripts/player.gd" id="1_720xg"]
 [ext_resource type="Texture2D" uid="uid://f5ckxsv41ik1" path="res://tutorial/assets/Sprites/Brawler-Girl/Idle/idle1.png" id="1_wsibf"]
@@ -37,6 +37,7 @@
 [ext_resource type="Texture2D" uid="uid://c6ihsm7wnpq3g" path="res://tutorial/assets/Sprites/Brawler-Girl/Punch/punch2.png" id="21_k0u42"]
 [ext_resource type="Texture2D" uid="uid://2a263i3c10oq" path="res://tutorial/assets/Sprites/Brawler-Girl/Punch/punch3.png" id="22_o1ge8"]
 [ext_resource type="PackedScene" uid="uid://dh80c2a0mf5p1" path="res://tutorial/scenes/idle_states/DL_Idle.tscn" id="34_0psqo"]
+[ext_resource type="Script" path="res://tutorial/scripts/hitboxes/lane_detector.gd" id="34_pqer3"]
 [ext_resource type="PackedScene" uid="uid://45j21rtbu63f" path="res://tutorial/scenes/idle_states/SL_Idle.tscn" id="35_48f6q"]
 [ext_resource type="PackedScene" uid="uid://bj08y4s61u6eo" path="res://tutorial/scenes/walk_states/DL_Walk.tscn" id="36_rbjc0"]
 [ext_resource type="Script" path="res://tutorial/scripts/attack_states/punch_state.gd" id="36_wtg35"]
@@ -45,8 +46,8 @@
 [ext_resource type="PackedScene" uid="uid://1467trqshptw" path="res://tutorial/scenes/sidestep_states/SidestepUp.tscn" id="40_4tr8w"]
 [ext_resource type="PackedScene" uid="uid://bjtnfw231bxmn" path="res://tutorial/scenes/sidestep_states/SidestepDown.tscn" id="41_2qxwo"]
 [ext_resource type="PackedScene" uid="uid://dkbur8b8s1kci" path="res://tutorial/scenes/sidestep_states/Sidestep.tscn" id="42_cw25u"]
-[ext_resource type="Script" path="res://script/hitboxes/hitbox.gd" id="42_qo6cp"]
-[ext_resource type="Script" path="res://script/hitboxes/hurtbox.gd" id="44_ts0d0"]
+[ext_resource type="Script" path="res://tutorial/scripts/hitboxes/hitbox.gd" id="42_qo6cp"]
+[ext_resource type="Script" path="res://tutorial/scripts/hitboxes/hurtbox.gd" id="44_ts0d0"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_kfxfc"]
 animations = [{
@@ -545,6 +546,9 @@ _data = {
 "Walk": SubResource("Animation_cou2a")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_himyi"]
+size = Vector2(23, 7.5)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_toubg"]
 size = Vector2(22, 6)
 
@@ -572,6 +576,14 @@ shape = SubResource("RectangleShape2D_6baep")
 libraries = {
 "": SubResource("AnimationLibrary_dhb2v")
 }
+
+[node name="LaneDetector" type="Area2D" parent="."]
+script = ExtResource("34_pqer3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LaneDetector"]
+position = Vector2(-2.5, 29.25)
+shape = SubResource("RectangleShape2D_himyi")
+debug_color = Color(0, 0.645728, 0.253646, 0.42)
 
 [node name="StateMachine" parent="." node_paths=PackedStringArray("starting_state") instance=ExtResource("16_3o84e")]
 starting_state = NodePath("SL_Idle")

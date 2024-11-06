@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://c03rebqxoooub"]
+[gd_scene load_steps=9 format=3 uid="uid://c03rebqxoooub"]
 
 [ext_resource type="Texture2D" uid="uid://bph4o28lqb6y0" path="res://tutorial/assets/Stage Layers/tileset.png" id="1_r55ks"]
 [ext_resource type="PackedScene" uid="uid://dt5ug2axwp3lj" path="res://tutorial/scenes/Player.tscn" id="2_ilblf"]
 [ext_resource type="Resource" uid="uid://blxy8oe2gp08e" path="res://tutorial/resources/player2_controls.tres" id="3_3upyh"]
-[ext_resource type="Script" path="res://script/hitboxes/hurtbox.gd" id="3_l8ckm"]
+[ext_resource type="Script" path="res://tutorial/scripts/hitboxes/hurtbox.gd" id="3_l8ckm"]
+[ext_resource type="PackedScene" uid="uid://jfox2aewl1k4" path="res://tutorial/scenes/Lane.tscn" id="5_xfgjo"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_42wmc"]
 texture = ExtResource("1_r55ks")
@@ -580,15 +581,15 @@ layer_3/name = "Backdrop"
 layer_3/z_index = -2
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(4, 4)
+zoom = Vector2(5, 5)
 
 [node name="Player1" parent="." groups=["Player1"] instance=ExtResource("2_ilblf")]
-position = Vector2(-127, 22)
+position = Vector2(-32, 24)
 collision_layer = 2
 collision_mask = 4
 
 [node name="Player2" parent="." groups=["Player2"] instance=ExtResource("2_ilblf")]
-position = Vector2(37, 22)
+position = Vector2(48, 24)
 controls = ExtResource("3_3upyh")
 
 [node name="HurtBox" type="Area2D" parent="."]
@@ -598,3 +599,14 @@ script = ExtResource("3_l8ckm")
 position = Vector2(80, 0)
 shape = SubResource("RectangleShape2D_oi4n6")
 debug_color = Color(0.124807, 0.521009, 1, 0.42)
+
+[node name="Lane1" parent="." instance=ExtResource("5_xfgjo")]
+position = Vector2(0, -16)
+priority = 1
+lane_index = 1
+
+[node name="Lane0" parent="." instance=ExtResource("5_xfgjo")]
+
+[node name="Lane-1" parent="." instance=ExtResource("5_xfgjo")]
+position = Vector2(0, 16)
+lane_index = -1
