@@ -566,6 +566,7 @@ sources/0 = SubResource("TileSetAtlasSource_42wmc")
 size = Vector2(20, 182)
 
 [node name="Level" type="Node2D"]
+position = Vector2(0, -32)
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_isobs")
@@ -579,9 +580,6 @@ layer_2/name = "Prop"
 layer_2/z_index = 1
 layer_3/name = "Backdrop"
 layer_3/z_index = -2
-
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(5, 5)
 
 [node name="Player1" parent="." groups=["Player1"] instance=ExtResource("2_ilblf")]
 position = Vector2(-32, 24)
@@ -610,3 +608,7 @@ lane_index = 1
 [node name="Lane-1" parent="." instance=ExtResource("5_xfgjo")]
 position = Vector2(0, 16)
 lane_index = -1
+
+[node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2(0, 24)
+zoom = Vector2(5, 5)
