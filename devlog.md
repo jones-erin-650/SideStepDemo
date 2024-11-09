@@ -1,3 +1,10 @@
+### 2024-11-04 - 3 hrs: sidestep refactoring and lane detection
+* sidesteps now work off two seperate states for sidestep up and down
+* the player sprite is tweened to a different lane rather than being jammed into a collision box
+* players can no longer sidestep multiple times during the animation
+* player 2 faces left on round start
+* player has a collision box that interacts with lane collision boxes to track what lanes both players are in
+
 ### 2024-10-29 - 2 hrs: player controls refactoring and multiplayer
 * controls are now handled by a controls resource in player
 * that controls variable is used through the Player reference in each State class, allowing them to call player.controls.left_key instead of left_key being a hardcoded string
