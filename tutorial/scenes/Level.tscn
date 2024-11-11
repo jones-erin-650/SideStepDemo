@@ -1,5 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://c03rebqxoooub"]
+[gd_scene load_steps=10 format=3 uid="uid://c03rebqxoooub"]
 
+[ext_resource type="Script" path="res://tutorial/scripts/game_loop.gd" id="1_7j61f"]
 [ext_resource type="Texture2D" uid="uid://bph4o28lqb6y0" path="res://tutorial/assets/Stage Layers/tileset.png" id="1_r55ks"]
 [ext_resource type="PackedScene" uid="uid://dt5ug2axwp3lj" path="res://tutorial/scenes/Player.tscn" id="2_ilblf"]
 [ext_resource type="Resource" uid="uid://blxy8oe2gp08e" path="res://tutorial/resources/player2_controls.tres" id="3_3upyh"]
@@ -567,6 +568,7 @@ size = Vector2(20, 182)
 
 [node name="Level" type="Node2D"]
 position = Vector2(0, -32)
+script = ExtResource("1_7j61f")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_isobs")

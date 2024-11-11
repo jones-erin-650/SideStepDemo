@@ -16,6 +16,7 @@ extends State
 var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity", -9.8)
 
 @onready var SIDESTEP_DISTANCE_Y: int = 15
+@onready var SIDESTEP_SPEED_Y: int = 10
 
 # TODO: We could source these animations from resources so we don't have to handle
 # the paths and such ourselves everytimes we add something
@@ -55,10 +56,6 @@ var lower_walk_animation: String = "Walk"
 # State Variables
 @onready var sprite_flipped: bool = controls.is_second_player
 
-# -1 for bottom lane, 0 for middle, 1 for top
-var lanes = [-1, 0, 1]
-var current_lane: int = 0
-
 #Input Keys
 #var movement_key: String = "Movement"
 #var sidestep_key: String = "Sidestep"
@@ -87,12 +84,12 @@ func determine_sprite_flipped(event_text: String) -> void:
 
 	
 func can_sidestep_up() -> bool:
-	if current_lane < 1:
+	if player.current_lane < 1:
 		return true
 	return false
 
 func can_sidestep_down() -> bool:
-	if current_lane > -1:
+	if player.current_lane > -1:
 		return true
 	return false
 
@@ -113,4 +110,4 @@ func exit(new_state: State = null) -> void:
 	if new_state:
 		#	pass on the sprite flipped value to the next state
 		new_state.sprite_flipped = sprite_flipped
-		new_state.current_lane = current_lane
+		#new_state.current_lane = current_lane

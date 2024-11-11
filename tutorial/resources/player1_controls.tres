@@ -4,7 +4,8 @@
 
 [resource]
 script = ExtResource("1_tggds")
-player_index = 0
+is_second_player = false
+player_index = 1
 movement_key = "P1_Movement"
 sidestep_key = "P1_Sidestep"
 left_key = "P1_Left"

@@ -8,6 +8,8 @@ func enter() -> void:
 	
 	var tween = get_tree().create_tween()
 	tween.tween_property(player, "position", Vector2(player.position.x, player.position.y+SIDESTEP_DISTANCE_Y), .3)
+	player.current_lane-=1
+	print("Player", controls.player_index, " current_lane: ", player.current_lane)
 
 
 	
