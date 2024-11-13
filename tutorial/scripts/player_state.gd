@@ -1,6 +1,7 @@
 class_name PlayerState
 extends State
 
+
 #only difference between this class and state is the reference to the player node
 #@onready var player: Player = get_tree().get_first_node_in_group("Player")
 # Using this instead of the node groups so it's easier to connect this class to the player node when having two players
@@ -42,6 +43,8 @@ var upper_idle_animation: String = "Idle"
 var lower_idle_animation: String = "Idle"
 var upper_walk_animation: String = "Walk"
 var lower_walk_animation: String = "Walk"
+
+var hitstun_animation: String = "Hurt"
 
 # States
 @export_group("States")

@@ -4,16 +4,31 @@ extends Node
 @onready var player_1: Player = $Player1
 @onready var player_2: Player = $Player2
 
+@onready var player_1_score: int = 0
+@onready var player_2_score: int = 0
+
+@export var winning_score: int = 3
+
 func _initialize():
 	print("Initialized:")
 
 func _process(delta):
 	determine_player_lanes()
+	determine_winner()
 
 func _finalize():
 	print("Finalized:")
 	
 #UtilFunctions
+
+func determine_winner():
+	if(player_1_score >= winning_score):
+		print("Player 1 Wins!!")
+		get_tree().reload_current_scene() 
+	elif(player_2_score >= winning_score):
+		print("Player 2 Wins!!")
+		get_tree().reload_current_scene() 
+
 # TODO: this is gross
 # It's handled this way so that the players don't need to have a reference to the other player
 # Doing that would completely destroy the scene heiharchy and make things very messy
@@ -28,3 +43,11 @@ func determine_player_lanes():
 		player_1.set_lower_lane()
 		player_2.set_upper_lane()
 		
+
+func _on_player_1_player_hurt() -> void:
+	player_2_score+=1
+	print("Player 2 Score: ", player_2_score)
+
+func _on_player_2_player_hurt() -> void:
+	player_1_score+=1
+	print("Player 1 Score: ", player_1_score)
