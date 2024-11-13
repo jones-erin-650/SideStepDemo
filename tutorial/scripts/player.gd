@@ -7,6 +7,8 @@ extends CharacterBody2D
 @onready var animation: AnimationPlayer = $Animation
 @onready var state_machine: StateMachine = $StateMachine
 
+signal player_hurt
+
 # -1 for bottom lane, 0 for middle, 1 for top
 var lanes = [-1, 0, 1]
 var current_lane: int = 0
@@ -53,8 +55,12 @@ func set_upper_lane():
 	same_lane = false
 	lower_lane = false
 
-
 func set_lower_lane():
 	upper_lane = false
 	same_lane = false
 	lower_lane = true
+
+
+func _on_hurt_box_player_hurt() -> void:
+	print("in _on_hurt_box_player_hurt()")
+	player_hurt.emit()

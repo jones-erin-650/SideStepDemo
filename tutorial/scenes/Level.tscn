@@ -581,12 +581,12 @@ layer_3/name = "Backdrop"
 layer_3/z_index = -2
 
 [node name="Player1" parent="." groups=["Player1"] instance=ExtResource("2_ilblf")]
-position = Vector2(-32, 24)
+position = Vector2(-24, 7)
 collision_layer = 2
 collision_mask = 4
 
 [node name="Player2" parent="." groups=["Player2"] instance=ExtResource("2_ilblf")]
-position = Vector2(48, 24)
+position = Vector2(29, 7)
 controls = ExtResource("3_3upyh")
 
 [node name="Lane1" parent="." instance=ExtResource("5_xfgjo")]
@@ -607,3 +607,6 @@ lane_index = -1
 offset = Vector2(0, 24)
 zoom = Vector2(5, 5)
 script = ExtResource("7_ex2c7")
+
+[connection signal="player_hurt" from="Player1" to="." method="_on_player_1_player_hurt"]
+[connection signal="player_hurt" from="Player2" to="." method="_on_player_2_player_hurt"]

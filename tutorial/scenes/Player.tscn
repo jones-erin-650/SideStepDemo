@@ -750,3 +750,5 @@ script = ExtResource("52_nh0go")
 position = Vector2(-3, 9.5)
 shape = SubResource("RectangleShape2D_jtyc6")
 debug_color = Color(0.696533, 0.367802, 0.84001, 0.42)
+
+[connection signal="player_hurt" from="StateMachine/Hitstun/HurtBox" to="." method="_on_hurt_box_player_hurt"]

@@ -12,7 +12,6 @@ func on_area_entered(hitbox: HitBox) -> void:
 	if hitbox == null: return
 #	deal damage
 	pass
-	print("damage dealt")
 
 func add_game_juice() -> void:
 	print("Adding game juice")
@@ -21,6 +20,6 @@ func add_game_juice() -> void:
 	camera.set_shake_strength(Vector2(5, 5))
 	
 func engine_slow() -> void:
-	Engine.time_scale = 0.5
+	Engine.time_scale = 0.9
 	await get_tree().create_timer(0.9 * 0.5).timeout
 	Engine.time_scale = 1
