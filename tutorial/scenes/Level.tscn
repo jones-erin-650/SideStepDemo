@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c03rebqxoooub"]
+[gd_scene load_steps=11 format=3 uid="uid://c03rebqxoooub"]
 
 [ext_resource type="Script" path="res://tutorial/scripts/game_loop.gd" id="1_7j61f"]
 [ext_resource type="Texture2D" uid="uid://bph4o28lqb6y0" path="res://tutorial/assets/Stage Layers/tileset.png" id="1_r55ks"]
@@ -6,6 +6,7 @@
 [ext_resource type="Resource" uid="uid://blxy8oe2gp08e" path="res://tutorial/resources/player2_controls.tres" id="3_3upyh"]
 [ext_resource type="Script" path="res://tutorial/scripts/hitboxes/hurtbox.gd" id="3_l8ckm"]
 [ext_resource type="PackedScene" uid="uid://jfox2aewl1k4" path="res://tutorial/scenes/Lane.tscn" id="5_xfgjo"]
+[ext_resource type="Script" path="res://tutorial/scripts/camera.gd" id="7_ex2c7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_42wmc"]
 texture = ExtResource("1_r55ks")
@@ -614,6 +615,7 @@ visible = false
 position = Vector2(0, 16)
 lane_index = -1
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." groups=["Camera"]]
 offset = Vector2(0, 24)
 zoom = Vector2(5, 5)
+script = ExtResource("7_ex2c7")

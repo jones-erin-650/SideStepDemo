@@ -1,6 +1,8 @@
 class_name PlayerState
 extends State
 
+@onready var camera: Camera = get_tree().get_first_node_in_group("Camera")
+
 #only difference between this class and state is the reference to the player node
 #@onready var player: Player = get_tree().get_first_node_in_group("Player")
 # Using this instead of the node groups so it's easier to connect this class to the player node when having two players
@@ -110,6 +112,9 @@ func tween_up() -> void:
 	tween.tween_property(player, "position", Vector2(player.position.x, player.position.y-SIDESTEP_DISTANCE_Y), .3)
 	player.current_lane+=1
 	print("Player", controls.player_index, " current_lane: ", player.current_lane)
+	
+func add_game_juice() -> void:
+	camera.set_zoom_strength(1.1)
 
 
 func tween_down() -> void:
