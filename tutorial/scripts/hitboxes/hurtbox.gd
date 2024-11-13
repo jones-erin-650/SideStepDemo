@@ -16,5 +16,11 @@ func on_area_entered(hitbox: HitBox) -> void:
 
 func add_game_juice() -> void:
 	print("Adding game juice")
+	engine_slow()
 	camera.set_zoom_strength(1.1)
 	camera.set_shake_strength(Vector2(5, 5))
+	
+func engine_slow() -> void:
+	Engine.time_scale = 0.5
+	await get_tree().create_timer(0.9 * 0.5).timeout
+	Engine.time_scale = 1
