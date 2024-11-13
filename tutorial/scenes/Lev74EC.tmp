@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://c03rebqxoooub"]
+[gd_scene load_steps=11 format=3 uid="uid://c03rebqxoooub"]
 
 [ext_resource type="Script" path="res://tutorial/scripts/game_loop.gd" id="1_7j61f"]
 [ext_resource type="Texture2D" uid="uid://bph4o28lqb6y0" path="res://tutorial/assets/Stage Layers/tileset.png" id="1_r55ks"]
 [ext_resource type="PackedScene" uid="uid://dt5ug2axwp3lj" path="res://tutorial/scenes/Player.tscn" id="2_ilblf"]
 [ext_resource type="Resource" uid="uid://blxy8oe2gp08e" path="res://tutorial/resources/player2_controls.tres" id="3_3upyh"]
+[ext_resource type="Script" path="res://tutorial/scripts/hitboxes/hurtbox.gd" id="3_l8ckm"]
 [ext_resource type="PackedScene" uid="uid://jfox2aewl1k4" path="res://tutorial/scenes/Lane.tscn" id="5_xfgjo"]
 [ext_resource type="Script" path="res://tutorial/scripts/camera.gd" id="7_ex2c7"]
 
@@ -563,6 +564,9 @@ physics_layer_2/collision_layer = 16
 physics_layer_2/collision_mask = 2
 sources/0 = SubResource("TileSetAtlasSource_42wmc")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oi4n6"]
+size = Vector2(20, 182)
+
 [node name="Level" type="Node2D"]
 position = Vector2(0, -32)
 script = ExtResource("1_7j61f")
@@ -588,6 +592,14 @@ collision_mask = 4
 [node name="Player2" parent="." groups=["Player2"] instance=ExtResource("2_ilblf")]
 position = Vector2(48, 24)
 controls = ExtResource("3_3upyh")
+
+[node name="HurtBox" type="Area2D" parent="."]
+script = ExtResource("3_l8ckm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(80, 0)
+shape = SubResource("RectangleShape2D_oi4n6")
+debug_color = Color(0.124807, 0.521009, 1, 0.42)
 
 [node name="Lane1" parent="." instance=ExtResource("5_xfgjo")]
 visible = false
