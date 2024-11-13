@@ -1,3 +1,8 @@
+### 2024-11-11 - 3 hrs: sidestep attacks
+* seperate same lane, lower lane, and upper lane states for idling, attacking, and walking
+* gameloop can now determine what lane a player is in and change their states based on that information
+* sidestep attacks that are done while in other lanes, tweens the player towards the other player
+
 ### 2024-11-04 - 3 hrs: sidestep refactoring and lane detection
 * sidesteps now work off two seperate states for sidestep up and down
 * the player sprite is tweened to a different lane rather than being jammed into a collision box
