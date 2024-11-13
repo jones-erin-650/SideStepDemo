@@ -15,8 +15,11 @@ func process_input(event: InputEvent) -> State:
 		print("InputEvent in upper_idle_state: " + event.as_text())
 		determine_sprite_flipped(event.as_text())
 		return sl_walk_state
-	elif event.is_action_pressed(controls.light_attack): return punch_state
+	elif event.is_action_pressed(controls.light_attack): return sl_punch_state
 	elif event.is_action_pressed(controls.heavy_attack): return kick_state
+	elif event.is_action_pressed(controls.up_key): return sidestep_up_state
+	elif event.is_action_pressed(controls.down_key): return sidestep_down_state
+
 	return null
 
 func process_physics(delta: float)	-> State:

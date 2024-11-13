@@ -592,7 +592,7 @@ debug_color = Color(0, 0.645728, 0.253646, 0.42)
 [node name="StateMachine" parent="." node_paths=PackedStringArray("starting_state") instance=ExtResource("16_3o84e")]
 starting_state = NodePath("SL_Idle")
 
-[node name="UL_Idle" parent="StateMachine" node_paths=PackedStringArray("ul_idle_state", "sl_idle_state", "ll_idle_state", "ul_walk_state", "side_step_state", "sidestep_up_state", "sidestep_down_state", "ul_punch_state", "ll_punch_state") groups=["States"] instance=ExtResource("34_0psqo")]
+[node name="UL_Idle" parent="StateMachine" node_paths=PackedStringArray("ul_idle_state", "sl_idle_state", "ll_idle_state", "ul_walk_state", "side_step_state", "sidestep_up_state", "sidestep_down_state") groups=["States"] instance=ExtResource("34_0psqo")]
 ul_idle_state = NodePath(".")
 sl_idle_state = NodePath("../SL_Idle")
 ll_idle_state = NodePath("../LL_Idle")
@@ -600,10 +600,8 @@ ul_walk_state = NodePath("../UL_Walk")
 side_step_state = NodePath("../Sidestep")
 sidestep_up_state = NodePath("../SidestepUp")
 sidestep_down_state = NodePath("../SidestepDown")
-ul_punch_state = NodePath("../UL_Punch")
-ll_punch_state = NodePath("../LL_Punch")
 
-[node name="SL_Idle" parent="StateMachine" node_paths=PackedStringArray("ul_idle_state", "sl_idle_state", "ll_idle_state", "sl_walk_state", "side_step_state", "sidestep_up_state", "sidestep_down_state", "sl_punch_state", "kick_state") groups=["States"] instance=ExtResource("35_48f6q")]
+[node name="SL_Idle" parent="StateMachine" node_paths=PackedStringArray("ul_idle_state", "sl_idle_state", "ll_idle_state", "sl_walk_state", "side_step_state", "sidestep_up_state", "sidestep_down_state", "kick_state") groups=["States"] instance=ExtResource("35_48f6q")]
 ul_idle_state = NodePath("../UL_Idle")
 sl_idle_state = NodePath(".")
 ll_idle_state = NodePath("../LL_Idle")
@@ -611,27 +609,14 @@ sl_walk_state = NodePath("../SL_Walk")
 side_step_state = NodePath("../Sidestep")
 sidestep_up_state = NodePath("../SidestepUp")
 sidestep_down_state = NodePath("../SidestepDown")
-sl_punch_state = NodePath("../SL_Punch")
 kick_state = NodePath("../Kick")
 
-[node name="LL_Idle" parent="StateMachine" node_paths=PackedStringArray("ul_idle_state", "sl_idle_state", "ll_idle_state", "ul_walk_state", "ll_walk_state", "side_step_state", "sidestep_up_state", "sidestep_down_state", "ll_punch_state") groups=["States"] instance=ExtResource("38_50qij")]
+[node name="LL_Idle" parent="StateMachine" node_paths=PackedStringArray("ul_idle_state", "sl_idle_state", "ll_idle_state") groups=["States"] instance=ExtResource("38_50qij")]
 ul_idle_state = NodePath("../UL_Idle")
 sl_idle_state = NodePath("../SL_Idle")
 ll_idle_state = NodePath(".")
-ul_walk_state = NodePath("../UL_Walk")
-ll_walk_state = NodePath("../LL_Walk")
-side_step_state = NodePath("../Sidestep")
-sidestep_up_state = NodePath("../SidestepUp")
-sidestep_down_state = NodePath("../SidestepDown")
-ll_punch_state = NodePath("../LL_Punch")
 
-[node name="UL_Walk" parent="StateMachine" node_paths=PackedStringArray("ul_idle_state", "sl_idle_state", "ll_idle_state", "ul_walk_state", "sl_walk_state", "ll_walk_state") groups=["States"] instance=ExtResource("39_36vw1")]
-ul_idle_state = NodePath("../UL_Idle")
-sl_idle_state = NodePath("../SL_Idle")
-ll_idle_state = NodePath("../LL_Idle")
-ul_walk_state = NodePath(".")
-sl_walk_state = NodePath("../SL_Walk")
-ll_walk_state = NodePath("../LL_Walk")
+[node name="UL_Walk" parent="StateMachine" groups=["States"] instance=ExtResource("39_36vw1")]
 
 [node name="SL_Walk" parent="StateMachine" node_paths=PackedStringArray("sl_idle_state", "sl_walk_state", "kick_state") groups=["States"] instance=ExtResource("37_aosuo")]
 sl_idle_state = NodePath("../SL_Idle")
@@ -681,36 +666,9 @@ shape = SubResource("RectangleShape2D_toubg")
 disabled = true
 debug_color = Color(0.682767, 0.502242, 5.77569e-07, 0.42)
 
-[node name="LL_Punch" parent="StateMachine" node_paths=PackedStringArray("ul_idle_state", "sl_idle_state", "ll_idle_state") instance=ExtResource("47_xl6d0")]
-ul_idle_state = NodePath("../UL_Idle")
-sl_idle_state = NodePath("../SL_Idle")
-ll_idle_state = NodePath("../LL_Idle")
+[node name="LL_Punch" parent="StateMachine" instance=ExtResource("47_xl6d0")]
 
-[node name="HitBox2" type="Area2D" parent="StateMachine/LL_Punch"]
-script = ExtResource("42_qo6cp")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StateMachine/LL_Punch/HitBox2"]
-position = Vector2(27, -1)
-shape = SubResource("RectangleShape2D_toubg")
-disabled = true
-debug_color = Color(0.682767, 0.502242, 5.77569e-07, 0.42)
-
-[node name="UL_Punch" parent="StateMachine" node_paths=PackedStringArray("ul_idle_state", "sl_idle_state", "ll_idle_state", "ul_walk_state", "sl_walk_state", "ll_walk_state") instance=ExtResource("48_alyal")]
-ul_idle_state = NodePath("../UL_Idle")
-sl_idle_state = NodePath("../SL_Idle")
-ll_idle_state = NodePath("../LL_Idle")
-ul_walk_state = NodePath("../UL_Walk")
-sl_walk_state = NodePath("../SL_Walk")
-ll_walk_state = NodePath("../LL_Walk")
-
-[node name="HitBox2" type="Area2D" parent="StateMachine/UL_Punch"]
-script = ExtResource("42_qo6cp")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StateMachine/UL_Punch/HitBox2"]
-position = Vector2(27, -1)
-shape = SubResource("RectangleShape2D_toubg")
-disabled = true
-debug_color = Color(0.682767, 0.502242, 5.77569e-07, 0.42)
+[node name="UL_Punch" parent="StateMachine" instance=ExtResource("48_alyal")]
 
 [node name="Kick" parent="StateMachine" node_paths=PackedStringArray("sl_idle_state", "sl_walk_state", "kick_state") groups=["States"] instance=ExtResource("37_gobr1")]
 sl_idle_state = NodePath("../SL_Idle")

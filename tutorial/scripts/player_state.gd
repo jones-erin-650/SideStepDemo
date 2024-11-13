@@ -2,7 +2,10 @@ class_name PlayerState
 extends State
 
 #only difference between this class and state is the reference to the player node
-@onready var player: Player = get_tree().get_first_node_in_group("Player")
+#@onready var player: Player = get_tree().get_first_node_in_group("Player")
+# Using this instead of the node groups so it's easier to connect this class to the player node when having two players
+# if I used groups then they would both point to the same Player node
+@onready var player: Player = self.get_parent().get_parent()
 #@onready var animation: AnimationPlayer = get_tree().get_first_node_in_group("Animation")
 @onready var animation: AnimationPlayer = player.animation
 
@@ -11,6 +14,9 @@ extends State
 @onready var controls: PlayerControls = player.controls
 
 var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity", -9.8)
+
+@onready var SIDESTEP_DISTANCE_Y: int = 15
+@onready var SIDESTEP_SPEED_Y: int = 10
 
 # TODO: We could source these animations from resources so we don't have to handle
 # the paths and such ourselves everytimes we add something
@@ -24,6 +30,10 @@ var punch_animation: String = "Punch"
 var jab_animation: String = "Jab"
 var kick_animation: String = "Kick"
 
+var upper_punch_animation: String = "Punch"
+var lower_punch_animation: String = "Punch"
+
+
 # TODO: should have its own animation
 var side_step_animation: String = "Jump"
 
@@ -35,23 +45,28 @@ var lower_walk_animation: String = "Walk"
 
 # States
 @export_group("States")
-@export var sl_idle_state: PlayerState
-@export var sl_walk_state: PlayerState
-@export var dl_idle_state: PlayerState
-@export var dl_walk_state: PlayerState
 
-@export var side_step_state: PlayerState
+@export var ul_idle_state: UpperLaneIdleState
+@export var sl_idle_state: SameLaneIdleState
+@export var ll_idle_state: LowerLaneIdleState
 
-@export var punch_state: PunchState
+@export var ul_walk_state: UpperLaneWalkState
+@export var sl_walk_state: SameLaneWalkState
+@export var ll_walk_state: LowerLaneWalkState
+
+@export var side_step_state: SidestepState
+@export var sidestep_up_state: SidestepUpState
+@export var sidestep_down_state: SidestepDownState
+
+@export var sl_punch_state: PunchState
 @export var kick_state: KickState
 
+@export var ul_punch_state: UpperLanePunchState
+@export var ll_punch_state: LowerLanePunchState
 
 
 # State Variables
-var sprite_flipped: bool = false
-# -1 for bottom lane, 0 for middle, 1 for top
-var lanes = [-1, 0, 1]
-var current_lane: int = 0
+@onready var sprite_flipped: bool = controls.is_second_player
 
 #Input Keys
 #var movement_key: String = "Movement"
@@ -79,58 +94,39 @@ func determine_sprite_flipped(event_text: String) -> void:
 	player.sprite.flip_h = sprite_flipped
 	pass
 
-# TODO: Just make seperate SideStepUp and Down states
-# Returns 1 if you're trying to sidestep up, returns -1 for sidestep down, and 0 for unable to sidestep
-func determine_lane_switch(event_text: String) -> void:
-	#	If there is an input event in the vertical actions array and you can sidestep in that direction, increment the lane
-	if up_actions.find(event_text) != -1 and can_sidestep_up(): current_lane+=1
-	if down_actions.find(event_text) != -1 and can_sidestep_down(): current_lane-=1
-	pass
 	
 func can_sidestep_up() -> bool:
-	if current_lane < 1:
+	if player.current_lane < 1:
 		return true
 	return false
 
 func can_sidestep_down() -> bool:
-	if current_lane > -1:
+	if player.current_lane > -1:
 		return true
 	return false
 
-#Base Fn
-	
-func _ready():
-#	just used for debugging now
-	print("PlayerState _ready()")
-	print("Player: " + str(player))
-	print("Collision: " + str(collision))
-	print("Animation: " + str(animation))
-	print("PlayerControls: " + str(controls))
+func tween_up() -> void:
+	var tween = get_tree().create_tween()
+	tween.tween_property(player, "position", Vector2(player.position.x, player.position.y-SIDESTEP_DISTANCE_Y), .3)
+	player.current_lane+=1
+	print("Player", controls.player_index, " current_lane: ", player.current_lane)
 
-#TODO: Not sure if this should be handled this way
-#TODO: For some reason you can sidestep during a side step animation
+
+func tween_down() -> void:
+	var tween = get_tree().create_tween()
+	tween.tween_property(player, "position", Vector2(player.position.x, player.position.y+SIDESTEP_DISTANCE_Y), .3)
+	player.current_lane-=1
+	print("Player", controls.player_index, " current_lane: ", player.current_lane)
+
+
+#Base Fn
+
 func process_physics(delta: float) -> State:
 #	super() should always be called in child classes with overrided methods so 
 #   generic logic that applies to all states can be contained in here, 
 #	while specific logic stays in the child states
-	player.velocity.y += gravity * delta
+	#player.velocity.y += gravity * delta
 	player.move_and_slide()
-	
-	
-	match current_lane:
-		-1:
-			player.set_collision_mask_value(3, true)
-			player.set_collision_mask_value(4, false)
-			player.set_collision_mask_value(5, false)
-			
-		0:
-			player.set_collision_mask_value(3, false)
-			player.set_collision_mask_value(4, true)
-			player.set_collision_mask_value(5, false)
-		1:
-			player.set_collision_mask_value(3, false)
-			player.set_collision_mask_value(4, false)
-			player.set_collision_mask_value(5, true)
 	
 	return null
 	
@@ -140,4 +136,4 @@ func exit(new_state: State = null) -> void:
 	if new_state:
 		#	pass on the sprite flipped value to the next state
 		new_state.sprite_flipped = sprite_flipped
-		new_state.current_lane = current_lane
+		#new_state.current_lane = current_lane

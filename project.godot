@@ -22,6 +22,11 @@ window/size/viewport_width=1280
 window/size/viewport_height=720
 window/stretch/mode="viewport"
 
+[global_group]
+
+Player1=""
+Player2=""
+
 [input]
 
 P1_Movement={
@@ -113,9 +118,10 @@ P2_Heavy={
 
 2d_physics/layer_1="World"
 2d_physics/layer_2="Player"
-2d_physics/layer_3="BottomLane"
-2d_physics/layer_4="MiddleLane"
-2d_physics/layer_5="TopLane"
+2d_physics/layer_3="Lane"
+2d_physics/layer_4="Lane Detection"
+2d_physics/layer_6="Hitboxes"
+2d_physics/layer_7="Hurtboxes"
 
 [rendering]
 

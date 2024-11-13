@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b8iavwbja3mlf"]
+
+[ext_resource type="Script" path="res://tutorial/scripts/walk_states/ul_walk_state.gd" id="1_yo48i"]
+
+[node name="UL_Walk" type="Node2D"]
+script = ExtResource("1_yo48i")

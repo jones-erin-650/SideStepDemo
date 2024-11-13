@@ -4,7 +4,8 @@
 
 [resource]
 script = ExtResource("1_q8gtr")
-player_index = 1
+is_second_player = true
+player_index = 2
 movement_key = "P2_Movement"
 sidestep_key = "P2_Sidestep"
 left_key = "P2_Left"

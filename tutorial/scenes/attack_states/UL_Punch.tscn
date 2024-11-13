@@ -1,16 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://cukk1hjitqum7"]
+[gd_scene load_steps=4 format=3 uid="uid://c32xun1jekqwt"]
 
-[ext_resource type="Script" path="res://tutorial/scripts/attack_states/punch_state.gd" id="1_a0dji"]
-[ext_resource type="Script" path="res://tutorial/scripts/hitboxes/hitbox.gd" id="2_qbr52"]
+[ext_resource type="Script" path="res://tutorial/scripts/attack_states/ul_punch_state.gd" id="1_grfgp"]
+[ext_resource type="Script" path="res://tutorial/scripts/hitboxes/hitbox.gd" id="2_coxsl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4qq83"]
 size = Vector2(22, 6)
 
-[node name="Punch" type="Node2D"]
-script = ExtResource("1_a0dji")
+[node name="UL_Punch" type="Node2D"]
+script = ExtResource("1_grfgp")
 
 [node name="HitBox" type="Area2D" parent="."]
-script = ExtResource("2_qbr52")
+script = ExtResource("2_coxsl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
 position = Vector2(27, -1)

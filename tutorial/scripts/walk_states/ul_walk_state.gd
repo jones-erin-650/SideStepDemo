@@ -1,8 +1,8 @@
-class_name DifferentLaneWalkState
+class_name UpperLaneWalkState
 extends WalkState
 
 func enter() -> void:
-	print("DL_WalkState")
+	print("UL_WalkState")
 	super()
 	player.animation.play(neutral_walk_animation)
 	
@@ -18,7 +18,7 @@ func process_input(event: InputEvent) -> State:
 func process_physics(delta: float)	-> State:
 	super(delta)
 	#do_move(get_move_direction())
-	if get_move_direction() == 0.0: return dl_idle_state
+	if get_move_direction() == 0.0: return ul_idle_state
 	return null
 	
 #func get_move_direction() -> float:
