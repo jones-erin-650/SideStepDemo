@@ -30,6 +30,10 @@ var punch_animation: String = "Punch"
 var jab_animation: String = "Jab"
 var kick_animation: String = "Kick"
 
+var upper_punch_animation: String = "Punch"
+var lower_punch_animation: String = "Punch"
+
+
 # TODO: should have its own animation
 var side_step_animation: String = "Jump"
 
@@ -41,17 +45,25 @@ var lower_walk_animation: String = "Walk"
 
 # States
 @export_group("States")
-@export var sl_idle_state: PlayerState
-@export var sl_walk_state: PlayerState
-@export var dl_idle_state: PlayerState
-@export var dl_walk_state: PlayerState
 
-@export var side_step_state: PlayerState
-@export var sidestep_up_state: PlayerState
-@export var sidestep_down_state: PlayerState
+@export var ul_idle_state: UpperLaneIdleState
+@export var sl_idle_state: SameLaneIdleState
+@export var ll_idle_state: LowerLaneIdleState
 
-@export var punch_state: PunchState
+@export var ul_walk_state: UpperLaneWalkState
+@export var sl_walk_state: SameLaneWalkState
+@export var ll_walk_state: LowerLaneWalkState
+
+@export var side_step_state: SidestepState
+@export var sidestep_up_state: SidestepUpState
+@export var sidestep_down_state: SidestepDownState
+
+@export var sl_punch_state: PunchState
 @export var kick_state: KickState
+
+@export var ul_punch_state: UpperLanePunchState
+@export var ll_punch_state: LowerLanePunchState
+
 
 # State Variables
 @onready var sprite_flipped: bool = controls.is_second_player
@@ -92,6 +104,20 @@ func can_sidestep_down() -> bool:
 	if player.current_lane > -1:
 		return true
 	return false
+
+func tween_up() -> void:
+	var tween = get_tree().create_tween()
+	tween.tween_property(player, "position", Vector2(player.position.x, player.position.y-SIDESTEP_DISTANCE_Y), .3)
+	player.current_lane+=1
+	print("Player", controls.player_index, " current_lane: ", player.current_lane)
+
+
+func tween_down() -> void:
+	var tween = get_tree().create_tween()
+	tween.tween_property(player, "position", Vector2(player.position.x, player.position.y+SIDESTEP_DISTANCE_Y), .3)
+	player.current_lane-=1
+	print("Player", controls.player_index, " current_lane: ", player.current_lane)
+
 
 #Base Fn
 

@@ -13,7 +13,7 @@ var current_lane: int = 0
 
 # Same lane as the other player
 var upper_lane = false
-var same_lane = true
+var same_lane = false
 var lower_lane = false
 
 func get_controls() -> PlayerControls:
@@ -44,20 +44,17 @@ func _input(event): state_machine.process_input(event)
 #Util functions
 	#Only one can be true at once
 func set_same_lane():
-	var upper_lane = false
-	var same_lane = true
-	var lower_lane = false
-	#print("Player", controls.player_index, " is in the same lane")
+	upper_lane = false
+	same_lane = true
+	lower_lane = false
 	
 func set_upper_lane():
-	var upper_lane = true
-	var same_lane = false
-	var lower_lane = false
-	#print("Player", controls.player_index, " is in the upper lane")
+	upper_lane = true
+	same_lane = false
+	lower_lane = false
 
 
 func set_lower_lane():
-	var upper_lane = false
-	var same_lane = false
-	var lower_lane = true
-	#print("Player", controls.player_index, " is in the lower lane")
+	upper_lane = false
+	same_lane = false
+	lower_lane = true

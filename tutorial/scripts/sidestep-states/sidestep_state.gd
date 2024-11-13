@@ -31,5 +31,12 @@ func process_input(event: InputEvent) -> State:
 # TODO: what state it returns should be determined by which lane the player is in
 func process_frame(delta: float) -> State:
 	super(delta)
-	if has_stepped: return sl_idle_state
+
+	if has_stepped:
+		if player.same_lane:
+			return sl_idle_state
+		elif player.upper_lane:
+			return ul_idle_state
+		elif player.lower_lane:
+			return ll_idle_state
 	return null
