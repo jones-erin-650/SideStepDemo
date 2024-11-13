@@ -1,3 +1,10 @@
+### 2024-12-11 - 2 hrs: functional hitboxes, camera zooms, and win condition
+* camera class and functions for shaking and zooming the camera on a hit
+* hitstun hate that the player enters on hit
+* engine slows down on hit
+* point system where each player gains a point after hitting the other, first to 3 wins
+
+
 ### 2024-11-11 - 3 hrs: sidestep attacks
 * seperate same lane, lower lane, and upper lane states for idling, attacking, and walking
 * gameloop can now determine what lane a player is in and change their states based on that information
