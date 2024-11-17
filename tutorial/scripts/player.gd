@@ -6,6 +6,7 @@ extends CharacterBody2D
 @onready var collision: CollisionShape2D = $Collision
 @onready var animation: AnimationPlayer = $Animation
 @onready var state_machine: StateMachine = $StateMachine
+@export var SPEED: float = 75
 
 signal player_hurt
 

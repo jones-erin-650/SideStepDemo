@@ -1,8 +1,6 @@
 class_name WalkState
 extends PlayerState
 
-const SPEED: float = 50
-
 func enter() -> void:
 	super()
 	player.animation.play(neutral_walk_animation)
@@ -26,4 +24,4 @@ func get_move_direction() -> float:
 	return Input.get_axis(controls.left_key, controls.right_key)
 	
 func do_move(move_direction: float) -> void:		
-	player.velocity.x = move_direction * SPEED
+	player.velocity.x = move_direction * player.SPEED
