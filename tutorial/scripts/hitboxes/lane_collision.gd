@@ -9,5 +9,4 @@ func _ready() -> void:
 	self.area_entered.connect(on_area_entered)
 	
 func on_area_entered(lane_detector: LaneDetector) -> void:
-	print("Lane ", lane_index, " Entered")
 	pass

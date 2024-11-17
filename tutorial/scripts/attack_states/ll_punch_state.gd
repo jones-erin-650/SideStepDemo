@@ -7,9 +7,9 @@ extends PlayerState
 var has_attacked: bool
 
 func enter() -> void:
-	print("LL Punch State")
 	has_attacked = false
 #	TODO: This should definitely be handled by a super() call to a generic Attack state
+	print("sprite_flipped in LL_Punch_state: ", sprite_flipped)
 	if sprite_flipped: hitbox.scale.x = -1
 	else: hitbox.scale.x = 1
 	player.animation.play(punch_animation)

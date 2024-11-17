@@ -117,8 +117,6 @@ func tween_up() -> void:
 		tween.tween_property(player, "position", Vector2(player.position.x+SIDESTEP_DISTANCE_X, player.position.y-SIDESTEP_DISTANCE_Y), .2)
 	
 	player.current_lane+=1
-	print("Player", controls.player_index, " current_lane: ", player.current_lane)
-
 
 func tween_down() -> void:
 	var tween = get_tree().create_tween()
@@ -127,7 +125,6 @@ func tween_down() -> void:
 	else:
 		tween.tween_property(player, "position", Vector2(player.position.x+SIDESTEP_DISTANCE_X, player.position.y+SIDESTEP_DISTANCE_Y), .2)
 	player.current_lane-=1
-	print("Player", controls.player_index, " current_lane: ", player.current_lane)
 
 
 #Base Fn

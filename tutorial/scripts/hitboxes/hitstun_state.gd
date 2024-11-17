@@ -6,7 +6,6 @@ extends PlayerState
 var hitstun_over: bool
 
 func enter() -> void:
-	print("Punch State")
 	hitstun_over = false
 	player.animation.play(hitstun_animation)
 	hurt_box.add_game_juice()

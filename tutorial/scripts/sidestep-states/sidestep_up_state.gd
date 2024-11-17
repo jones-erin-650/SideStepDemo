@@ -3,13 +3,10 @@ extends SidestepState
 
 #TODO: Tween the animation upwards at a speed set in the Player script
 func enter() -> void:
-	print("Sidestep Up State")
 	super()
 	
 	tween_up()
-	print("player", controls.player_index, " upper_lane: ", player.upper_lane)
-	print("player", controls.player_index, " same_lane: ", player.same_lane)
-	print("player", controls.player_index, " lower_lane: ", player.lower_lane)
+	
 
 	
 func exit(new_state: State = null) -> void:

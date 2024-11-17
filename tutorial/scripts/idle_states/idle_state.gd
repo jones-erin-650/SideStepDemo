@@ -12,7 +12,6 @@ func process_input(event: InputEvent) -> State:
 	super(event)
 	if event.is_action_pressed(controls.movement_key):
 #		Flip sprite
-		print("InputEvent in upper_idle_state: " + event.as_text())
 		determine_sprite_flipped(event.as_text())
 		return sl_walk_state
 	elif event.is_action_pressed(controls.light_attack): return sl_punch_state

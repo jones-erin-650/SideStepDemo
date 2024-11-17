@@ -7,7 +7,6 @@ extends HurtBox
 signal player_hurt()
 
 func on_area_entered(hitbox: HitBox) -> void:
-	print("player_hurt emitted")
 	player_hurt.emit()
 	
 	if hitbox == null: return

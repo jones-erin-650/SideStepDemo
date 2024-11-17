@@ -2,7 +2,6 @@ class_name SameLaneWalkState
 extends WalkState
 
 func enter() -> void:
-	print("SL_WalkState")
 	super()
 	player.animation.play(neutral_walk_animation)
 	
@@ -13,6 +12,10 @@ func exit(new_state: State = null) -> void:
 func process_input(event: InputEvent) -> State:
 	super(event)
 	#if event.is_action_pressed(movement_key): determine_sprite_flipped(event.as_text())
+	if event.is_action_pressed(controls.light_attack): return sl_punch_state
+	#elif event.is_action_pressed(heavy_attack): return kick_state
+	elif event.is_action_pressed(controls.up_key) and can_sidestep_up(): return sidestep_up_state
+	elif event.is_action_pressed(controls.down_key) and can_sidestep_down(): return sidestep_down_state
 	return null
 
 func process_physics(delta: float)	-> State:

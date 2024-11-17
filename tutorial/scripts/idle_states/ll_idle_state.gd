@@ -2,7 +2,6 @@ class_name LowerLaneIdleState
 extends IdleState
 
 func enter() -> void:
-	print("ll_Idle_state")
 	super()
 	
 func exit(new_state: State = null) -> void:

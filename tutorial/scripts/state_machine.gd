@@ -5,7 +5,6 @@ var current_state: State
 @export var starting_state: State
 
 func init() -> void: 
-	print("StateMachine init()")
 	change_state(starting_state)
 
 # All of these child methods return State. If any of those return values are 

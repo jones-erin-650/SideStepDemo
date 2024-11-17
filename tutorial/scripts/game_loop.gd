@@ -9,21 +9,18 @@ extends Node
 
 @export var winning_score: int = 3
 
-func _initialize():
-	print("Initialized:")
 
 func _process(delta):
 	determine_player_lanes()
 	determine_winner()
 
-func _finalize():
-	print("Finalized:")
 	
 #UtilFunctions
 
 func determine_winner():
 	if(player_1_score >= winning_score):
 		print("Player 1 Wins!!")
+
 		get_tree().reload_current_scene() 
 	elif(player_2_score >= winning_score):
 		print("Player 2 Wins!!")
@@ -51,3 +48,5 @@ func _on_player_1_player_hurt() -> void:
 func _on_player_2_player_hurt() -> void:
 	player_1_score+=1
 	print("Player 1 Score: ", player_1_score)
+	
+	

@@ -6,7 +6,6 @@ extends PlayerState
 var has_attacked: bool
 
 func enter() -> void:
-	print("Kick State")
 	has_attacked = false
 	
 	#	TODO: This should definitely be handled by a super() call to a generic Attack state
@@ -26,7 +25,6 @@ func process_input(event: InputEvent) -> State:
 	super(event)
 	if has_attacked and event.is_action_pressed(controls.movement_key):
 #		Flip sprite
-		print("InputEvent in kick_state: " + event.as_text())
 		determine_sprite_flipped(event.as_text())
 		return sl_walk_state
 	elif has_attacked and event.is_action_pressed(controls.light_attack): sl_punch_state

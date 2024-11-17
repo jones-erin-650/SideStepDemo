@@ -11,7 +11,6 @@ func enter() -> void:
 #	has_stepped indicates that the sidestep finished and the state can transition
 	player.animation.animation_finished.connect(func(_anim): 
 		has_stepped = true
-		print("Animation Finished!")
 	)
 
 func exit(new_state: State = null) -> void:
@@ -23,7 +22,6 @@ func process_input(event: InputEvent) -> State:
 
 	if has_stepped and event.is_action_pressed(controls.movement_key):
 #		Flip sprite
-		print("InputEvent in sidestep_state: " + event.as_text())
 		determine_sprite_flipped(event.as_text())
 		return sl_walk_state
 	return null

@@ -2,8 +2,6 @@ class_name SameLaneIdleState
 extends IdleState
 
 func enter() -> void:
-	print("SL_IdleState")
-	print("Initial sprite_flipped: " + str(sprite_flipped))
 	super()
 	
 func exit(new_state: State = null) -> void:

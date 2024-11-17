@@ -74,12 +74,10 @@ func handle_input(delta):
 func increment_lane():
 	current_lane += 1
 	position.y = lanes[current_lane]  
-	print(current_lane)
 	
 func decrement_lane():
 	current_lane -= 1
 	position.y = lanes[current_lane]  
-	print(current_lane)
 
 	
 	
