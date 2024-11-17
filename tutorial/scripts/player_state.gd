@@ -16,8 +16,9 @@ extends State
 
 var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity", -9.8)
 
+@onready var SIDESTEP_DISTANCE_X: int = 5
 @onready var SIDESTEP_DISTANCE_Y: int = 15
-@onready var SIDESTEP_SPEED_Y: int = 10
+@onready var SIDESTEP_SPEED: int = .25
 
 # TODO: We could source these animations from resources so we don't have to handle
 # the paths and such ourselves everytimes we add something
@@ -110,14 +111,21 @@ func can_sidestep_down() -> bool:
 
 func tween_up() -> void:
 	var tween = get_tree().create_tween()
-	tween.tween_property(player, "position", Vector2(player.position.x, player.position.y-SIDESTEP_DISTANCE_Y), .3)
+	if sprite_flipped:
+		tween.tween_property(player, "position", Vector2(player.position.x-SIDESTEP_DISTANCE_X, player.position.y-SIDESTEP_DISTANCE_Y), .2)
+	else:
+		tween.tween_property(player, "position", Vector2(player.position.x+SIDESTEP_DISTANCE_X, player.position.y-SIDESTEP_DISTANCE_Y), .2)
+	
 	player.current_lane+=1
 	print("Player", controls.player_index, " current_lane: ", player.current_lane)
 
 
 func tween_down() -> void:
 	var tween = get_tree().create_tween()
-	tween.tween_property(player, "position", Vector2(player.position.x, player.position.y+SIDESTEP_DISTANCE_Y), .3)
+	if sprite_flipped:
+		tween.tween_property(player, "position", Vector2(player.position.x-SIDESTEP_DISTANCE_X, player.position.y+SIDESTEP_DISTANCE_Y), .2)
+	else:
+		tween.tween_property(player, "position", Vector2(player.position.x+SIDESTEP_DISTANCE_X, player.position.y+SIDESTEP_DISTANCE_Y), .2)
 	player.current_lane-=1
 	print("Player", controls.player_index, " current_lane: ", player.current_lane)
 
