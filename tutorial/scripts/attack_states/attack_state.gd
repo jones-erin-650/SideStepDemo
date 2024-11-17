@@ -28,7 +28,7 @@ func process_input(event: InputEvent) -> State:
 		print("InputEvent in punch_state: " + event.as_text())
 		determine_sprite_flipped(event.as_text())
 		return sl_walk_state
-	elif has_attacked and event.is_action_pressed(controls.light_attack): punch_state
+	elif has_attacked and event.is_action_pressed(controls.light_attack): sl_punch_state
 	elif has_attacked and event.is_action_pressed(controls.heavy_attack): kick_state
 	return null
 

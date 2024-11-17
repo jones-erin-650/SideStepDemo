@@ -1,4 +1,4 @@
-### 2024-12-11 - 2 hrs: functional hitboxes, camera zooms, and win condition
+### 2024-11-12 - 2 hrs: functional hitboxes, camera zooms, and win condition
 * camera class and functions for shaking and zooming the camera on a hit
 * hitstun hate that the player enters on hit
 * engine slows down on hit
