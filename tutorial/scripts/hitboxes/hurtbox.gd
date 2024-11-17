@@ -15,8 +15,12 @@ func on_area_entered(hitbox: HitBox) -> void:
 
 func add_game_juice() -> void:
 	engine_slow()
+	
+	
 	camera.set_zoom_strength(1.1)
 	camera.set_shake_strength(Vector2(5, 5))
+	
+
 	
 func engine_slow() -> void:
 	Engine.time_scale = 0.9
