@@ -343,7 +343,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_w7wyh"]
 resource_name = "Kick"
-length = 0.80002
+length = 1.00002
 step = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -558,10 +558,10 @@ size = Vector2(23, 7.5)
 size = Vector2(22, 6)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_svvry"]
-size = Vector2(26, 13)
+size = Vector2(19, 13)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jtyc6"]
-size = Vector2(16, 45)
+size = Vector2(20, 45)
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_720xg")
@@ -723,7 +723,7 @@ kick_state = NodePath(".")
 script = ExtResource("42_qo6cp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StateMachine/Kick/HitBox"]
-position = Vector2(18, 4)
+position = Vector2(21.5, 4)
 shape = SubResource("RectangleShape2D_svvry")
 disabled = true
 debug_color = Color(0.668301, 0.510243, 0, 0.42)
@@ -748,7 +748,7 @@ ll_punch_state = NodePath("../LL_Punch")
 script = ExtResource("52_nh0go")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StateMachine/Hitstun/HurtBox"]
-position = Vector2(-3, 9.5)
+position = Vector2(-1, 10)
 shape = SubResource("RectangleShape2D_jtyc6")
 debug_color = Color(0.696533, 0.367802, 0.84001, 0.42)
 
