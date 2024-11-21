@@ -1,3 +1,17 @@
+### 2024-11-2 - 3 hrs (planned)
+* have hurtboxes flip when the sprite flips
+* unique hurtboxes for attacking
+* unique hurtboxes for sidestepping
+* let the animations finish playing after the winning hit
+
+### 2024-11-17 - 3 hrs: polishing state transitions
+* animations are faster
+* kick hitboxes no longer hurt their own players hurtbox
+* can attack and sidestep while walking
+* faster sidestep tweening
+* sidesteps tween you slightly horizontally too
+*  knockback on hit so you don't get stuck in hitstun
+
 ### 2024-11-12 - 2 hrs: functional hitboxes, camera zooms, and win condition
 * camera class and functions for shaking and zooming the camera on a hit
 * hitstun hate that the player enters on hit
