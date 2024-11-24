@@ -1,8 +1,7 @@
-### 2024-11-2 - 3 hrs (planned)
-* have hurtboxes flip when the sprite flips
-* unique hurtboxes for attacking
-* unique hurtboxes for sidestepping
-* let the animations finish playing after the winning hit
+### 2024-11-23 - 1 hrs 
+* game slows down more when a player wins so the animations can finish
+* punching has more recovery so it's easier to punish spamming
+* z-index changes when you sidestep so they appear in front and back of each other
 
 ### 2024-11-17 - 3 hrs: polishing state transitions
 * animations are faster
