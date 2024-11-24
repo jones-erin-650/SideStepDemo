@@ -115,7 +115,7 @@ func tween_up() -> void:
 		tween.tween_property(player, "position", Vector2(player.position.x-SIDESTEP_DISTANCE_X, player.position.y-SIDESTEP_DISTANCE_Y), .2)
 	else:
 		tween.tween_property(player, "position", Vector2(player.position.x+SIDESTEP_DISTANCE_X, player.position.y-SIDESTEP_DISTANCE_Y), .2)
-	
+	player.z_index -= 1
 	player.current_lane+=1
 
 func tween_down() -> void:
@@ -124,6 +124,7 @@ func tween_down() -> void:
 		tween.tween_property(player, "position", Vector2(player.position.x-SIDESTEP_DISTANCE_X, player.position.y+SIDESTEP_DISTANCE_Y), .2)
 	else:
 		tween.tween_property(player, "position", Vector2(player.position.x+SIDESTEP_DISTANCE_X, player.position.y+SIDESTEP_DISTANCE_Y), .2)
+	player.z_index += 1
 	player.current_lane-=1
 
 

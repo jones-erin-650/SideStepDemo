@@ -20,10 +20,15 @@ func _process(delta):
 func determine_winner():
 	if(player_1_score >= winning_score):
 		print("Player 1 Wins!!")
+		engine_slow(.1)
+		await get_tree().create_timer(.7).timeout
+
 
 		get_tree().reload_current_scene() 
 	elif(player_2_score >= winning_score):
 		print("Player 2 Wins!!")
+		engine_slow(.1)
+		await get_tree().create_timer(.7).timeout
 		get_tree().reload_current_scene() 
 
 # TODO: this is gross
@@ -49,4 +54,7 @@ func _on_player_2_player_hurt() -> void:
 	player_1_score+=1
 	print("Player 1 Score: ", player_1_score)
 	
-	
+func engine_slow(slowdown_scale) -> void:
+	Engine.time_scale = slowdown_scale
+	await get_tree().create_timer(slowdown_scale * 0.5).timeout
+	Engine.time_scale = 1
