@@ -2,6 +2,7 @@
 * punching no longer switches lane, much easier to whiff punish mashing now
 * new slower attack that switches lane
 * hurtbox is smaller so your can avoid attacks by switching lanes
+* made the game winning slow down last longer to make who won clearer
 
 ### 2024-11-23 - 1 hrs - misc polishing
 * game slows down more when a player wins so the animations can finish
