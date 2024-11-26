@@ -21,14 +21,13 @@ func determine_winner():
 	if(player_1_score >= winning_score):
 		print("Player 1 Wins!!")
 		engine_slow(.1)
-		await get_tree().create_timer(.7).timeout
-
-
+		await get_tree().create_timer(0.1 * 0.5).timeout
 		get_tree().reload_current_scene() 
+
 	elif(player_2_score >= winning_score):
 		print("Player 2 Wins!!")
 		engine_slow(.1)
-		await get_tree().create_timer(.7).timeout
+		await get_tree().create_timer(0.1 * 0.5).timeout
 		get_tree().reload_current_scene() 
 
 # TODO: this is gross
