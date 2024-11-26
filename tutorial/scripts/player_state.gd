@@ -18,7 +18,8 @@ var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity", -
 
 @onready var SIDESTEP_DISTANCE_X: int = 5
 @onready var SIDESTEP_DISTANCE_Y: int = 15
-@onready var SIDESTEP_SPEED: int = .25
+@onready var SIDESTEP_SPEED: int = 10
+@onready var DIVEKICK_SPEED: int = 12
 
 # TODO: We could source these animations from resources so we don't have to handle
 # the paths and such ourselves everytimes we add something
@@ -29,8 +30,9 @@ var neutral_walk_animation: String = "Walk"
 
 # TODO: These should be taken from attack resources to streamline development
 var punch_animation: String = "Punch"
-var jab_animation: String = "Jab"
 var kick_animation: String = "Kick"
+var ul_divekick_animation: String = "UL_DiveKick"
+var ll_divekick_animation: String = "LL_DiveKick"
 
 var upper_punch_animation: String = "Punch"
 var lower_punch_animation: String = "Punch"
@@ -109,21 +111,21 @@ func can_sidestep_down() -> bool:
 		return true
 	return false
 
-func tween_up() -> void:
+func tween_up(speed: float) -> void:
 	var tween = get_tree().create_tween()
 	if sprite_flipped:
-		tween.tween_property(player, "position", Vector2(player.position.x-SIDESTEP_DISTANCE_X, player.position.y-SIDESTEP_DISTANCE_Y), .2)
+		tween.tween_property(player, "position", Vector2(player.position.x-SIDESTEP_DISTANCE_X, player.position.y-SIDESTEP_DISTANCE_Y), speed*get_process_delta_time())
 	else:
-		tween.tween_property(player, "position", Vector2(player.position.x+SIDESTEP_DISTANCE_X, player.position.y-SIDESTEP_DISTANCE_Y), .2)
+		tween.tween_property(player, "position", Vector2(player.position.x+SIDESTEP_DISTANCE_X, player.position.y-SIDESTEP_DISTANCE_Y), speed*get_process_delta_time())
 	player.z_index -= 1
 	player.current_lane+=1
 
-func tween_down() -> void:
+func tween_down(speed: float) -> void:
 	var tween = get_tree().create_tween()
 	if sprite_flipped:
-		tween.tween_property(player, "position", Vector2(player.position.x-SIDESTEP_DISTANCE_X, player.position.y+SIDESTEP_DISTANCE_Y), .2)
+		tween.tween_property(player, "position", Vector2(player.position.x-SIDESTEP_DISTANCE_X, player.position.y+SIDESTEP_DISTANCE_Y), speed*get_process_delta_time())
 	else:
-		tween.tween_property(player, "position", Vector2(player.position.x+SIDESTEP_DISTANCE_X, player.position.y+SIDESTEP_DISTANCE_Y), .2)
+		tween.tween_property(player, "position", Vector2(player.position.x+SIDESTEP_DISTANCE_X, player.position.y+SIDESTEP_DISTANCE_Y), speed*get_process_delta_time())
 	player.z_index += 1
 	player.current_lane-=1
 

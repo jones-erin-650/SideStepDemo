@@ -23,6 +23,6 @@ func add_game_juice() -> void:
 
 	
 func engine_slow() -> void:
-	Engine.time_scale = 0.9
-	await get_tree().create_timer(0.9 * 0.5).timeout
+	Engine.time_scale = 0.8
+	await get_tree().create_timer(0.8 * 0.5).timeout
 	Engine.time_scale = 1

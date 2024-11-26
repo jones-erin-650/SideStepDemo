@@ -14,7 +14,8 @@ func process_input(event: InputEvent) -> State:
 #		Flip sprite
 		determine_sprite_flipped(event.as_text())
 		return ul_walk_state
-	elif event.is_action_pressed(controls.light_attack): return ul_punch_state
+	elif event.is_action_pressed(controls.light_attack): return sl_punch_state
+	elif event.is_action_pressed(controls.heavy_attack): return ul_punch_state
 	#elif event.is_action_pressed(heavy_attack): return kick_state
 	elif event.is_action_pressed(controls.up_key) and can_sidestep_up(): return sidestep_up_state
 	elif event.is_action_pressed(controls.down_key) and can_sidestep_down(): return sidestep_down_state

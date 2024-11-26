@@ -1,7 +1,7 @@
 class_name LowerLanePunchState
 extends PlayerState
 
-@onready var hitbox: Area2D = $HitBox
+@onready var hitbox: HitBox = $HitBox1
 
 
 var has_attacked: bool
@@ -12,13 +12,13 @@ func enter() -> void:
 	print("sprite_flipped in LL_Punch_state: ", sprite_flipped)
 	if sprite_flipped: hitbox.scale.x = -1
 	else: hitbox.scale.x = 1
-	player.animation.play(punch_animation)
+	player.animation.play(ll_divekick_animation)
 	
 #	has_attacked indicates that the attack finished and the state can transition
 	player.animation.animation_finished.connect(func(_anim): has_attacked = true)
 	
 #	Move up a lane
-	tween_up()
+	tween_up(DIVEKICK_SPEED)
 	
 func exit(new_state: State = null) -> void:
 	super(new_state)

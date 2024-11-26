@@ -5,7 +5,7 @@ extends SidestepState
 func enter() -> void:
 	super()
 	
-	tween_down()
+	tween_down(SIDESTEP_SPEED)
 
 
 	
