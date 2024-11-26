@@ -1,4 +1,9 @@
-### 2024-11-23 - 1 hrs 
+### 2024-11-25- 2.5 hrs - attack balancing
+* punching no longer switches lane, much easier to whiff punish mashing now
+* new slower attack that switches lane
+* hurtbox is smaller so your can avoid attacks by switching lanes
+
+### 2024-11-23 - 1 hrs - misc polishing
 * game slows down more when a player wins so the animations can finish
 * punching has more recovery so it's easier to punish spamming
 * z-index changes when you sidestep so they appear in front and back of each other
